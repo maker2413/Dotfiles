@@ -9,3 +9,5 @@ export EDITOR="emacs -nw"
 alias ll="ls -la"
 alias emacs="emacs -nw"
 alias gs="git status"
+
+neofetch
