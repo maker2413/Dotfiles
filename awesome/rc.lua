@@ -571,7 +571,7 @@ beautiful.useless_gap = 4
 -- Autostart programs
 awful.spawn.with_shell("nitrogen --restore")
 awful.spawn.with_shell("picom")
--- awful.spawn.with_shell("xset b off")
+awful.spawn.with_shell("xset b off")
 
 -- Title bar when floating mode
 client.connect_signal("property::floating", function(c)
