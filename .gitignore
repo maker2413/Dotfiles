@@ -11,6 +11,8 @@
 .config/libfm
 .config/pcmanfm
 .config/pulse
+.config/Notepadqq
+.config/QtProject.conf
 .dmrc
 .local
 .ssh
@@ -18,5 +20,6 @@
 .xsession-errors
 .xsession-errors.old
 Code
+Downloads
 Pictures
 yay
