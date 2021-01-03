@@ -7,6 +7,8 @@
 .config/dconf
 .config/emacs/auto-save-list
 .config/emacs/elpa
+.config/emacs/tramp
+.config/emacs/%*
 .config/gtk*
 .config/libfm
 .config/pcmanfm
@@ -14,6 +16,7 @@
 .config/Notepadqq
 .config/QtProject.conf
 .dmrc
+.histfile
 .local
 .ssh
 .pki
