@@ -15,8 +15,8 @@
 .config/pulse
 .config/Notepadqq
 .config/QtProject.conf
+.config/zsh/.histfile
 .dmrc
-.histfile
 .local
 .ssh
 .pki
