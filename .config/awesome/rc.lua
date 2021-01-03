@@ -566,7 +566,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Gaps
-beautiful.useless_gap = 4
+beautiful.useless_gap = 3
 
 -- Autostart programs
 awful.spawn.with_shell("nitrogen --restore")
