@@ -11,3 +11,15 @@ alias emacs="emacs -nw"
 alias gs="git status"
 
 neofetch
+
+# Pyenv Setup
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# Tfenv Setup
+export PATH="$HOME/.tfenv/bin:$PATH"
+
+# Rbenv Setup
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"

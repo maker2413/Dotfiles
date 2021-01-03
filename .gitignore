@@ -18,8 +18,11 @@
 .config/zsh/.histfile
 .dmrc
 .local
-.ssh
 .pki
+.pyenv
+.rbenv
+.ssh
+.tfenv
 .xsession-errors
 .xsession-errors.old
 Code
