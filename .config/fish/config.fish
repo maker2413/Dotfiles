@@ -277,3 +277,21 @@ for file in $__fish_config_dir/conf.d/*.fish $__fish_sysconf_dir/conf.d/*.fish $
     [ -f $file -a -r $file ]
     and source $file
 end
+
+# User Config
+set -x EDITOR "emacs -nw"
+
+alias ll "ls -la"
+alias emacs "emacs -nw"
+alias gs "git status"
+
+neofetch
+
+# SSH Agent
+pgrep ssh-agent
+if test $status -eq 1
+  eval (ssh-agent -c) > /dev/null
+  set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+  set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+  set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+end
