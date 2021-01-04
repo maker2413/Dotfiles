@@ -2,6 +2,7 @@
 .bash_history
 .bash_logout
 .bash_profile
+.bundle
 .cache
 .config/BraveSoftware
 .config/dconf
@@ -17,6 +18,7 @@
 .config/QtProject.conf
 .config/zsh/.histfile
 .dmrc
+.gem
 .local
 .pki
 .pyenv
