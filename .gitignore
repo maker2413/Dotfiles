@@ -10,7 +10,7 @@
 .config/emacs/elpa
 .config/emacs/tramp
 .config/emacs/%*
-.confis/fish/fish_variables
+.config/fish/fish_variables
 .config/gtk*
 .config/libfm
 .config/pcmanfm
