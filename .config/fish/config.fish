@@ -280,18 +280,35 @@ end
 
 # User Config
 set -x EDITOR "emacs -nw"
+set fish_greeting
 
 alias ll "ls -la"
 alias emacs "emacs -nw"
 alias gs "git status"
+alias gcm "git checkout master"
+alias gl "git pull"
+alias gc "git commit"
+alias gp "git push"
 
 neofetch
 
 # SSH Agent
-pgrep ssh-agent
+pgrep ssh-agent > /dev/null
 if test $status -eq 1
   eval (ssh-agent -c) > /dev/null
   set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
   set -Ux SSH_AGENT_PID $SSH_AGENT_PID
   set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
 end
+
+# Pyenv Setup
+set -p PATH $HOME/.pyenv/bin
+pyenv init - | source
+pyenv virtualenv-init - | source
+
+# Tfenv Setup
+set -p PATH $HOME/.tfenv/bin
+
+# Rbenv Setup
+set -p PATH $HOME/.rbenv/bin
+rbenv init - | source
