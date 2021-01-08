@@ -26,6 +26,7 @@
 .pyenv
 .rbenv
 .ssh
+.terraform.d
 .tfenv
 .xsession-errors
 .xsession-errors.old
