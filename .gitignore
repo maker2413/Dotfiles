@@ -1,4 +1,5 @@
 .Xauthority
+.ansible
 .aws
 .bash_history
 .bash_logout
