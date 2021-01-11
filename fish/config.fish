@@ -282,13 +282,14 @@ end
 set -x EDITOR "emacs -nw"
 set fish_greeting
 
-alias ll "ls -la"
 alias emacs "emacs -nw"
-alias gs "git status"
+alias ga "git add"
+alias gc "git commit"
 alias gcm "git checkout master"
 alias gl "git pull"
-alias gc "git commit"
+alias gs "git status"
 alias gp "git push"
+alias ll "ls -la"
 
 neofetch
 
