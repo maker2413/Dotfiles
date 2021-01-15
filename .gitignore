@@ -12,6 +12,7 @@
 .config/emacs/elpa
 .config/emacs/tramp
 .config/emacs/%*
+.config/emacs/url
 .config/fish/fish_variables
 .config/gtk*
 .config/libfm
@@ -34,5 +35,6 @@
 Code
 Downloads
 Pictures
+Scripts
 Temp
 yay
