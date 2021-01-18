@@ -24,6 +24,8 @@
 .config/zsh/.histfile
 .dmrc
 .gem
+.gnupg
+.librewolf
 .local
 .pki
 .pyenv
