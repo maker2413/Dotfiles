@@ -6,6 +6,7 @@
 .bash_profile
 .bundle
 .cache
+.cargo
 .config/BraveSoftware
 .config/GabAI
 .config/Notepadqq
@@ -37,6 +38,7 @@
 .xsession-errors.old
 Code
 Downloads
+paru-bin
 Pictures
 Scripts
 Temp
