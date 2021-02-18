@@ -18,6 +18,7 @@
 .config/emacs/%*
 .config/emacs/url
 .config/fish/fish_variables
+.config/GIMP/
 .config/gtk*
 .config/libfm
 .config/pcmanfm
