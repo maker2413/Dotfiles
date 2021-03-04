@@ -12,6 +12,7 @@
 .config/Notepadqq
 .config/QtProject.conf
 .config/dconf
+.config/discord
 .config/emacs/auto-save-list
 .config/emacs/elpa
 .config/emacs/eshell
@@ -24,6 +25,7 @@
 .config/libfm
 .config/pcmanfm
 .config/pulse
+.config/spotify
 .config/zsh/.histfile
 .dmrc
 .gem
