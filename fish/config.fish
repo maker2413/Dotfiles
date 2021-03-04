@@ -282,6 +282,7 @@ end
 set -x EDITOR "emacs -nw"
 set fish_greeting
 
+alias brave-browser "brave"
 alias emacs "emacs -nw"
 alias ga "git add"
 alias gc "git commit"
