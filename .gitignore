@@ -8,10 +8,9 @@
 .cache
 .cargo
 .config/BraveSoftware
-.config/GabAI
-.config/Notepadqq
-.config/QtProject.conf
+.config/Clementine
 .config/dconf
+.config/deadbeef
 .config/discord
 .config/emacs/auto-save-list
 .config/emacs/elpa
@@ -20,11 +19,14 @@
 .config/emacs/%*
 .config/emacs/url
 .config/fish/fish_variables
+.config/GabAI
 .config/GIMP/
 .config/gtk*
 .config/libfm
+.config/Notepadqq
 .config/pcmanfm
 .config/pulse
+.config/QtProject.conf
 .config/spotify
 .config/zsh/.histfile
 .dmrc
@@ -33,6 +35,7 @@
 .kube
 .librewolf
 .local
+.nvidia-settings-rc
 .pki
 .pyenv
 .rbenv
@@ -43,6 +46,7 @@
 .xsession-errors.old
 Code
 Downloads
+Music
 paru-bin
 Pictures
 Scripts

@@ -210,7 +210,6 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
@@ -578,9 +577,9 @@ awful.spawn.with_shell("xbindkeys")
 
 -- Title bar when floating mode
 client.connect_signal("property::floating", function(c)
-			 if c.floating then
-			    awful.titlebar.show(c)
-			 else
-			    awful.titlebar.hide(c)
-			 end
+                         if c.floating then
+                            awful.titlebar.show(c)
+                         else
+                            awful.titlebar.hide(c)
+                         end
 end)
