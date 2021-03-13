@@ -26,6 +26,7 @@
 .config/Notepadqq
 .config/pcmanfm
 .config/pulse
+.config/qtile/__pycache__
 .config/QtProject.conf
 .config/spotify
 .config/zsh/.histfile
