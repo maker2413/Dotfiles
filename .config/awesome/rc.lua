@@ -1,15 +1,48 @@
--- If LuaRocks is installed, make sure that packages installed through it are
--- found (e.g. lgi). If LuaRocks is not installed, do nothing.
-pcall(require, "luarocks.loader")
+-- ░█▀█░█░█░█▀▀░█▀▀░█▀█░█▄█░█▀▀░█░█░█▄█
+-- ░█▀█░█▄█░█▀▀░▀▀█░█░█░█░█░█▀▀░█▄█░█░█
+-- ░▀░▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░▀░▀░▀
+-- Banner created with: `toilet -f pagga AwesomeWM`
 
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
--- Widget and layout library
-local wibox = require("wibox")
+
 -- Theme handling library
 local beautiful = require("beautiful")
+
+-- ░█▀▀░█░█░█▀▀░█░░░█░░
+-- ░▀▀█░█▀█░█▀▀░█░░░█░░
+-- ░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀
+
+awful.util.shell = '/bin/fish'
+
+-- ░▀█▀░█░█░█▀▀░█▄█░█▀▀
+-- ░░█░░█▀█░█▀▀░█░█░█▀▀
+-- ░░▀░░▀░▀░▀▀▀░▀░▀░▀▀▀
+
+beautiful.init(require('theme'))
+
+-- ░█░░░█▀█░█░█░█▀█░█░█░▀█▀
+-- ░█░░░█▀█░░█░░█░█░█░█░░█░
+-- ░▀▀▀░▀░▀░░▀░░▀▀▀░▀▀▀░░▀░
+
+-- require('layout')
+
+-- ░█▀▀░█▀█░█▀█░█▀▀░▀█▀░█▀▀░█░█░█▀▄░█▀█░▀█▀░▀█▀░█▀█░█▀█░█▀▀
+-- ░█░░░█░█░█░█░█▀▀░░█░░█░█░█░█░█▀▄░█▀█░░█░░░█░░█░█░█░█░▀▀█
+-- ░▀▀▀░▀▀▀░▀░▀░▀░░░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀░▀░░▀░░▀▀▀░▀▀▀░▀░▀░▀▀▀
+
+-- ░█▄█░█▀█░█▀▄░█░█░█░░░█▀▀░█▀▀
+-- ░█░█░█░█░█░█░█░█░█░░░█▀▀░▀▀█
+-- ░▀░▀░▀▀▀░▀▀░░▀▀▀░▀▀▀░▀▀▀░▀▀▀
+
+-- -- If LuaRocks is installed, make sure that packages installed through it are
+-- -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
+-- pcall(require, "luarocks.loader")
+
+-- Widget and layout library
+local wibox = require("wibox")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
@@ -45,7 +78,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"

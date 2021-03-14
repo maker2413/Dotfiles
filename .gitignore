@@ -40,6 +40,7 @@
 .pyenv
 .rbenv
 .ssh
+.steam*
 .terraform.d
 .tfenv
 .xsession-errors
