@@ -29,6 +29,7 @@
 .config/qtile/__pycache__
 .config/QtProject.conf
 .config/spotify
+.config/StardewValley
 .config/zsh/.histfile
 .dmrc
 .gem
