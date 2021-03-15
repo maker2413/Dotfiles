@@ -312,6 +312,8 @@ globalkeys = gears.table.join(
               {description = "open Brave web browser", group = "launcher"}),
     awful.key({ modkey,           }, "c", function () awful.util.spawn("clementine") end,
               {description = "open Clementine music player", group = "launcher"}),
+    awful.key({ modkey,           }, "d", function () awful.util.spawn("discord") end,
+              {description = "open Discord", group = "launcher"}),
     awful.key({ modkey,           }, "e", function () awful.util.spawn("emacs") end,
               {description = "open Emacs", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
