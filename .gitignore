@@ -8,6 +8,7 @@
 .cache
 .cargo
 .config/BraveSoftware
+.config/cef_user_data
 .config/Clementine
 .config/dconf
 .config/deadbeef
