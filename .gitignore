@@ -35,6 +35,7 @@
 .kube
 .librewolf
 .local
+.npm
 .nvidia-settings-rc
 .pki
 .pyenv
