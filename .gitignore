@@ -8,6 +8,7 @@
 .cache
 .cargo
 .config/BraveSoftware
+.config/cef_user_data
 .config/Clementine
 .config/dconf
 .config/deadbeef
@@ -26,8 +27,10 @@
 .config/Notepadqq
 .config/pcmanfm
 .config/pulse
+.config/qtile/__pycache__
 .config/QtProject.conf
 .config/spotify
+.config/StardewValley
 .config/zsh/.histfile
 .dmrc
 .gem
@@ -47,6 +50,7 @@
 .xsession-errors
 .xsession-errors.old
 Code
+Documents
 Downloads
 Music
 paru-bin
