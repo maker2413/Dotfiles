@@ -316,6 +316,8 @@ globalkeys = gears.table.join(
               {description = "open Discord", group = "launcher"}),
     awful.key({ modkey,           }, "e", function () awful.util.spawn("emacs") end,
               {description = "open Emacs", group = "launcher"}),
+    awful.key({ modkey,           }, "v", function () awful.util.spawn("virt-manager") end,
+              {description = "open Virt Manager", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
