@@ -24,6 +24,7 @@
 .config/GIMP/
 .config/gtk*
 .config/libfm
+.config/mimeapps.list
 .config/Notepadqq
 .config/pcmanfm
 .config/pulse
