@@ -293,6 +293,7 @@ alias gl "git pull"
 alias gs "git status"
 alias gp "git push"
 alias ll "ls -la"
+alias updates "paru -Syyu"
 
 neofetch
 
