@@ -261,7 +261,7 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
+    awful.key({ modkey,           }, "/",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
@@ -316,6 +316,8 @@ globalkeys = gears.table.join(
               {description = "open Discord", group = "launcher"}),
     awful.key({ modkey,           }, "e", function () awful.util.spawn("emacs") end,
               {description = "open Emacs", group = "launcher"}),
+    awful.key({ modkey,           }, "s", function () awful.util.spawn("steam") end,
+              {description = "open Steam", group = "launcher"}),
     awful.key({ modkey,           }, "v", function () awful.util.spawn("virt-manager") end,
               {description = "open Virt Manager", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
