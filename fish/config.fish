@@ -292,6 +292,7 @@ alias gd "git diff"
 alias gl "git pull"
 alias gs "git status"
 alias gp "git push"
+alias gr "git restore"
 alias ll "ls -la"
 alias updates "paru -Syyu"
 
