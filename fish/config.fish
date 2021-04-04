@@ -284,6 +284,7 @@ set fish_greeting
 
 alias brave-browser "brave"
 alias emacs "emacs -nw"
+alias em "emacs -nw"
 alias ga "git add"
 alias gc "git commit"
 alias gch "git checkout"
