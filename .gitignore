@@ -36,12 +36,14 @@
 .dmrc
 .gem
 .gnupg
+.java
 .kube
 .lesshst
 .librewolf
 .local
 .npm
 .nvidia-settings-rc
+.oracle_jre_usage
 .pki
 .pyenv
 .rbenv
