@@ -4,12 +4,10 @@
 -- Banner created with: `toilet -f pagga AwesomeWM`
 
 -- Standard awesome library
-local gears = require("gears")
 local awful = require("awful")
-require("awful.autofocus")
-
--- Theme handling library
 local beautiful = require("beautiful")
+local gears = require("gears")
+require("awful.autofocus")
 
 -- ░█▀▀░█░█░█▀▀░█░░░█░░
 -- ░▀▀█░█▀█░█▀▀░█░░░█░░
@@ -36,6 +34,26 @@ beautiful.init(require('theme'))
 -- ░█▄█░█▀█░█▀▄░█░█░█░░░█▀▀░█▀▀
 -- ░█░█░█░█░█░█░█░█░█░░░█▀▀░▀▀█
 -- ░▀░▀░▀▀▀░▀▀░░▀▀▀░▀▀▀░▀▀▀░▀▀▀
+
+-- ░█░█░█▀█░█░░░█░░░█▀█░█▀█░█▀█░█▀▀░█▀▄
+-- ░█▄█░█▀█░█░░░█░░░█▀▀░█▀█░█▀▀░█▀▀░█▀▄
+-- ░▀░▀░▀░▀░▀▀▀░▀▀▀░▀░░░▀░▀░▀░░░▀▀▀░▀░▀
+
+-- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
+screen.connect_signal(
+   "property::geometry",
+   function(s)
+      -- Wallpaper
+      if beautiful.wallpaper then
+         local wallpaper = beautiful.wallpaper
+         -- If wallpaper is a function, call it with the screen
+         if type(wallpaper) == "function" then
+            wallpaper = wallpaper(s)
+         end
+         gears.wallpaper.maximized(wallpaper, s, true)
+      end
+   end
+)
 
 -- -- If LuaRocks is installed, make sure that packages installed through it are
 -- -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
@@ -181,21 +199,6 @@ local tasklist_buttons = gears.table.join(
                      awful.button({ }, 5, function ()
                                               awful.client.focus.byidx(-1)
                                           end))
-
-local function set_wallpaper(s)
-    -- Wallpaper
-    if beautiful.wallpaper then
-        local wallpaper = beautiful.wallpaper
-        -- If wallpaper is a function, call it with the screen
-        if type(wallpaper) == "function" then
-            wallpaper = wallpaper(s)
-        end
-        gears.wallpaper.maximized(wallpaper, s, true)
-    end
-end
-
--- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
-screen.connect_signal("property::geometry", set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
