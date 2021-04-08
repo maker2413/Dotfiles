@@ -49,7 +49,10 @@ keys = [
     # Launch software
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "b", lazy.spawn("brave"), desc="Launch Brave"),
+    Key([mod], "d", lazy.spawn("discord"), desc="Launch Discord"),
     Key([mod], "e", lazy.spawn("emacs"), desc="Launch Emacs"),
+    Key([mod], "s", lazy.spawn("steam"), desc="Launch Steam"),
+    Key([mod], "v", lazy.spawn("virt-manager"), desc="Launch Virt Manager"),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
@@ -60,6 +63,42 @@ keys = [
     Key([mod], "space", lazy.spawncmd(),
         desc="Spawn a command using a prompt widget")
 ]
+
+def show_keys():
+    key_help = ""
+    for k in keys:
+        mods = ""
+
+        for m in k.modifiers:
+            if m == "mod4":
+                mods += "Super + "
+            else:
+                mods += m.capitalize() + " + "
+
+        if len(k.key) > 1:
+            mods += k.key.capitalize()
+        else:
+            mods += k.key
+
+        key_help += "{:<30} {}".format(mods, k.desc + "\n")
+
+    return key_help
+
+
+keys.extend(
+    [
+        Key(
+            [mod],
+            "slash",
+            lazy.spawn(
+                "sh -c 'echo \""
+                + show_keys()
+                + '" | rofi -dmenu -theme ~/.config/rofi/configTall.rasi -i -p "?"\''
+            ),
+            desc="Print keyboard bindings",
+        ),
+    ]
+)
 
 group_names = [("www", {'layout': 'max'}),
                ("2", {'layout': 'column'}),
