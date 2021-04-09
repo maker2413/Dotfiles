@@ -1,7 +1,7 @@
 from typing import List  # noqa: F401
 
 from libqtile import bar, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, DropDown, Group, Key, Match, ScratchPad, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
@@ -11,10 +11,14 @@ terminal = "kitty"
 
 keys = [
     # Switch between windows
-    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
-    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
+    Key([mod], "h", lazy.layout.left(),
+        desc="Move focus to left"),
+    Key([mod], "l", lazy.layout.right(),
+        desc="Move focus to right"),
+    Key([mod], "j", lazy.layout.down(),
+        desc="Move focus down"),
+    Key([mod], "k", lazy.layout.up(),
+        desc="Move focus up"),
     Key([mod], "p", lazy.layout.next(),
         desc="Move window focus to other window"),
 
@@ -26,7 +30,8 @@ keys = [
         desc="Move window to the right"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(),
         desc="Move window down"),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
+    Key([mod, "shift"], "k", lazy.layout.shuffle_up(),
+        desc="Move window up"),
 
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
@@ -36,8 +41,10 @@ keys = [
         desc="Grow window to the right"),
     Key([mod, "control"], "j", lazy.layout.grow_down(),
         desc="Grow window down"),
-    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    Key([mod, "control"], "k", lazy.layout.grow_up(),
+        desc="Grow window up"),
+    Key([mod], "n", lazy.layout.normalize(),
+        desc="Reset all window sizes"),
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
@@ -47,19 +54,30 @@ keys = [
         desc="Toggle between split and unsplit sides of stack"),
 
     # Launch software
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "b", lazy.spawn("brave"), desc="Launch Brave"),
-    Key([mod], "d", lazy.spawn("discord"), desc="Launch Discord"),
-    Key([mod], "e", lazy.spawn("emacs"), desc="Launch Emacs"),
-    Key([mod], "s", lazy.spawn("steam"), desc="Launch Steam"),
-    Key([mod], "v", lazy.spawn("virt-manager"), desc="Launch Virt Manager"),
+    Key([mod], "Return", lazy.spawn(terminal),
+        desc="Launch terminal"),
+    Key([mod], "b", lazy.spawn('brave'),
+        desc="Launch Brave"),
+    Key([mod], "d", lazy.spawn('discord'),
+        desc="Launch Discord"),
+    Key([mod], "e", lazy.spawn('emacs'),
+        desc="Launch Emacs"),
+    Key([mod], "s", lazy.spawn('steam'),
+        desc="Launch Steam"),
+    Key([mod], "v", lazy.spawn('virt-manager'),
+        desc="Launch Virt Manager"),
 
     # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod], "Tab", lazy.next_layout(),
+        desc="Toggle between layouts"),
+    Key([mod], "q", lazy.window.kill(),
+        desc="Kill focused window"),
 
-    Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod, "control"], "r", lazy.restart(),
+        desc="Restart Qtile"),
+    Key([mod, "control"], "q", lazy.shutdown(),
+        desc="Shutdown Qtile"),
+
     Key([mod], "space", lazy.spawncmd(),
         desc="Spawn a command using a prompt widget")
 ]
@@ -84,35 +102,72 @@ def show_keys():
 
     return key_help
 
-
-keys.extend(
-    [
-        Key(
-            [mod],
-            "slash",
-            lazy.spawn(
-                "sh -c 'echo \""
-                + show_keys()
-                + '" | rofi -dmenu -theme ~/.config/rofi/configTall.rasi -i -p "?"\''
-            ),
-            desc="Print keyboard bindings",
+keys.extend([
+    Key(
+        [mod], "slash",
+        lazy.spawn(
+            "sh -c 'echo \""
+            + show_keys()
+            + "\" | rofi -dmenu -i -mesg \"Keyboard shortcuts\"'"
         ),
-    ]
-)
+        desc="Print keyboard bindings"
+    ),
+])
 
-group_names = [("www", {'layout': 'max'}),
-               ("2", {'layout': 'column'}),
-               ("3", {'layout': 'column'}),
-               ("4", {'layout': 'column'}),
-               ("5", {'layout': 'column'}),
-               ("6", {'layout': 'column'}),
-               ("7", {'layout': 'column'}),
-               ("8", {'layout': 'column'}),
-               ("9", {'layout': 'column'})]
+# keys.extend(
+#     [
+#         Key(
+#             [mod],
+#             "slash",
+#             lazy.spawn(
+#                 "sh -c 'echo \""
+#                 + show_keys()
+#                 + '" | rofi -dmenu -theme ~/.config/rofi/configTall.rasi -i -p "?"\''
+#             ),
+#             desc="Print keyboard bindings",
+#         ),
+#     ]
+# )
 
-group_keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+group_names = [("WWW", {'layout': 'max'}),
+               ("Term", {'layout': 'columns'}),
+               ("Emacs", {'layout': 'columns'}),
+               ("4", {'layout': 'columns'}),
+               ("Chat", {'layout': 'columns'}),
+               ("6", {'layout': 'columns'}),
+               ("7", {'layout': 'columns'}),
+               ("8", {'layout': 'columns'})]
+
+group_keys = ['1', '2', '3', '4', '5', '6', '7', '8']
 
 groups = [Group(name, **kwargs) for name, kwargs in group_names]
+
+groups.append(
+    ScratchPad(
+        "scratchpad",
+        [
+            # define a drop down terminal.
+            # it is placed in the upper third of screen by default.
+            DropDown(
+                "term",
+                "kitty",
+                height=0.6,
+                on_focus_lost_hide=False,
+                opacity=1,
+                warp_pointer=False,
+            ),
+            DropDown(
+                "emacs",
+                "emacs",
+                height=0.6,
+                on_focus_lost_hide=False,
+                opacity=1,
+                warp_pointer=False,
+            ),
+        ],
+    )
+)
+
 
 for i, (name, kwargs) in enumerate(group_names):
     keys.extend([
@@ -121,28 +176,18 @@ for i, (name, kwargs) in enumerate(group_names):
             desc="Switch to group {}".format(group_keys[i])),
 
         # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], group_keys[i], lazy.window.togroup(name),
-            desc="move focused window to group {}".format(group_keys[i]))
+        Key([mod, "shift"], group_keys[i], lazy.window.togroup(name, switch_group=True),
+            desc="Switch to & move focused window to group {}".format(group_keys[i]))
         # Or, use below if you prefer not to switch to that group.
         # # mod1 + shift + letter of group = move focused window to group
-        # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-        #     desc="move focused window to group {}".format(i.name)),
+        # Key([mod, "shift"], group_keys[i], lazy.window.togroup(name),
+        #     desc="move focused window to group {}".format(group_keys[i]))
     ])
 
-# for i in groups:
-#     keys.extend([
-#         # mod1 + letter of group = switch to group
-#         Key([mod], i.name, lazy.group[i.name].toscreen(),
-#             desc="Switch to group {}".format(i.name)),
-
-#         # mod1 + shift + letter of group = switch to & move focused window to group
-#         Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True),
-#             desc="Switch to & move focused window to group {}".format(i.name)),
-#         # Or, use below if you prefer not to switch to that group.
-#         # # mod1 + shift + letter of group = move focused window to group
-#         # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-#         #     desc="move focused window to group {}".format(i.name)),
-#     ])
+keys.extend([
+    Key([mod], "9", lazy.group['scratchpad'].dropdown_toggle('term')),
+    Key([mod], "0", lazy.group['scratchpad'].dropdown_toggle('emacs'))
+])
 
 layouts = [
     layout.Columns(border_focus_stack='#d75f5f'),
@@ -223,7 +268,10 @@ focus_on_window_activation = "smart"
 # mailing lists, GitHub issues, and other WM documentation that suggest setting
 # this string if your java app doesn't work correctly. We may as well just lie
 # and say that we're a working one by default.
-#
+
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+
+lazy.spawn("nitrogen --restore")
+# lazy.spawn("picom")
