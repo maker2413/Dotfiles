@@ -62,6 +62,8 @@ keys = [
         desc="Launch Discord"),
     Key([mod], "e", lazy.spawn('emacs'),
         desc="Launch Emacs"),
+    Key([mod], "g", lazy.spawn('gimp'),
+        desc="Launch Gimp"),
     Key([mod], "s", lazy.spawn('steam'),
         desc="Launch Steam"),
     Key([mod], "v", lazy.spawn('virt-manager'),
