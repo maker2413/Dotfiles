@@ -41,6 +41,7 @@
 .lesshst
 .librewolf
 .local
+.minikube
 .npm
 .nvidia-settings-rc
 .oracle_jre_usage
