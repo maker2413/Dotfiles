@@ -282,9 +282,14 @@ end
 set -x EDITOR "emacs -nw"
 set fish_greeting
 
+# Basic aliases
 alias brave-browser "brave"
 alias emacs "emacs -nw"
 alias em "emacs -nw"
+alias ll "ls -la"
+alias updates "paru -Syyu"
+
+# Aliases for git commands
 alias ga "git add"
 alias gc "git commit"
 alias gch "git checkout"
@@ -295,8 +300,20 @@ alias gl "git pull"
 alias gs "git status"
 alias gp "git push"
 alias gr "git restore"
-alias ll "ls -la"
-alias updates "paru -Syyu"
+
+# Aliases for kubectl commands
+alias ka "kubectl apply"
+alias kc "kubectl create"
+alias kd "kubectl describe"
+alias kdl "kubectl delete"
+alias kg "kubectl get"
+
+# Aliases for terraform commands
+alias ta "terraform apply"
+alias td "terraform destroy"
+alias ti "terraform init"
+alias tp "terraform plan"
+alias tw "terraform workspace"
 
 neofetch
 
