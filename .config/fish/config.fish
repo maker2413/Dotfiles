@@ -305,8 +305,8 @@ alias gr "git restore"
 alias ka "kubectl apply"
 alias kc "kubectl create"
 alias kd "kubectl describe"
-alias kdl "kubectl delete"
 alias kg "kubectl get"
+alias kr "kubectl delete"
 
 # Aliases for terraform commands
 alias ta "terraform apply"
