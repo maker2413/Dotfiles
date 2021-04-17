@@ -14,7 +14,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: Hephaedot
+  IMAGE_NAME: hephaedot
 
 jobs:
   # Run tests.
