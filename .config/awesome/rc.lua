@@ -622,6 +622,7 @@ awful.spawn.with_shell("nitrogen --restore")
 awful.spawn.with_shell("picom")
 awful.spawn.with_shell("xset b off")
 awful.spawn.with_shell("xbindkeys")
+awful.spawn.with_shell("flameshot")
 
 -- Title bar when floating mode
 client.connect_signal("property::floating", function(c)
