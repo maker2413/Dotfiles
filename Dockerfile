@@ -24,6 +24,4 @@ RUN git clone https://aur.archlinux.org/paru-bin.git && \
 
 RUN paru -S pyenv pyenv-virtualenv tfenv rbenv --noconfirm
 
-RUN sudo chsh -s /bin/fish
-
-SHELL ["/bin/fish", "-c"]
+ENTRYPOINT [ "fish" ]
