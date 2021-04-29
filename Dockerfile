@@ -24,4 +24,8 @@ RUN git clone https://aur.archlinux.org/paru-bin.git && \
 
 RUN paru -S pyenv pyenv-virtualenv tfenv rbenv --noconfirm
 
+RUN mkdir /home/epost/Code
+
+WORKDIR /home/epost/Code
+
 ENTRYPOINT [ "fish" ]
