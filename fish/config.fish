@@ -286,7 +286,7 @@ set fish_greeting
 alias brave-browser "brave"
 alias emacs "emacs -nw"
 alias em "emacs -nw"
-alias dev "docker run -it -v (pwd):/home/epost/Code hephaestdev:latest"
+alias dev "docker run -it -v /home/epost/.ssh:/home/epost/.ssh -v (pwd):/home/epost/Code hephaestdev:latest"
 alias ll "ls -la"
 alias updates "paru -Syyu"
 
