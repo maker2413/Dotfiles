@@ -288,6 +288,10 @@ alias emacs "emacs -nw"
 alias em "emacs -nw"
 alias dev "docker run -it -v /home/epost/.ssh:/home/epost/.ssh -v (pwd):/home/epost/Code hephaestdev:latest"
 alias ll "ls -la"
+alias startdocker "sudo systemctl start docker"
+alias startssh "sudo systemctl start sshd"
+alias stopdocker "sudo systemctl stop docker"
+alias stopssh "sudo systemctl stop sshd"
 alias updates "paru -Syyu"
 
 # Aliases for git commands
