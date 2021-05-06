@@ -53,6 +53,7 @@
 .steam*
 .terraform.d
 .tfenv
+.vagrant.d
 .xsession-errors
 .xsession-errors.old
 Code
