@@ -346,4 +346,4 @@ rbenv init - | source
 
 # Load my keybindings
 bind \cr peco_history # Bind for peco select history to Ctrl+R
-bind \cf peco_directory # Bind for peco change directory to Ctrl+F
+bind \cg peco_directory # Bind for peco change directory to Ctrl+F
