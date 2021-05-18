@@ -22,8 +22,10 @@
 .config/emacs/url
 .config/fish/fish_variables
 .config/GabAI
-.config/GIMP/
+.config/GIMP
 .config/gtk*
+.config/JetBrains
+.config/jgit
 .config/libfm
 .config/mimeapps.list
 .config/Notepadqq
@@ -33,6 +35,7 @@
 .config/QtProject.conf
 .config/spotify
 .config/StardewValley
+.config/telepresence
 .config/zsh/.histfile
 .dmrc
 .docker
