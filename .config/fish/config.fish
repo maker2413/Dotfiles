@@ -314,6 +314,13 @@ alias kd "kubectl describe"
 alias kg "kubectl get"
 alias kr "kubectl delete"
 
+# Aliases for watching kubectl commands
+alias wka "watch kubectl apply"
+alias wkc "watch kubectl create"
+alias wkd "watch kubectl describe"
+alias wkg "watch kubectl get"
+alias wkr "watch kubectl delete"
+
 # Aliases for terraform commands
 alias ta "terraform apply"
 alias td "terraform destroy"
