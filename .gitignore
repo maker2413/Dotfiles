@@ -57,6 +57,7 @@
 .pki
 .pyenv
 .rbenv
+.spinnaker
 .ssh
 .steam*
 .terraform.d
