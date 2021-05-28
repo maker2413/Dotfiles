@@ -1,0 +1,5 @@
+These are just my personal configs for my arch linux setup. Feel free to use or modify
+them in anyway. Please note I have included a =Xmodmap= config file to swap left ctrl
+and left alt as that is how I like it. I know this is inconventional so I don't have
+it setup by default. If you would like to use this keyboard config just rename the =Xmodmap=
+file to =.Xmodmap=.
