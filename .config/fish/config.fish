@@ -286,6 +286,7 @@ set fish_greeting
 alias brave-browser "brave"
 alias emacs "emacs -nw"
 alias em "emacs -nw"
+alias cls "clear && exa -l --icons"
 alias dev "docker run -it -v /home/epost/.ssh:/home/epost/.ssh -v (pwd):/home/epost/Code hephaestdev:latest"
 alias ls "exa"
 alias ll "exa -lag --icons"
