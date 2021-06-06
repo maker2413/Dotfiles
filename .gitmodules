@@ -1,0 +1,3 @@
+[submodule ".config/emacs"]
+	path = .config/emacs
+	url = https://github.com/maker2413/Emacs.git
