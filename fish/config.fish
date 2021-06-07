@@ -305,6 +305,8 @@ alias gcm "git checkout master"
 alias gd "git diff"
 alias gl "git pull"
 alias gs "git status"
+alias gsp "git subtree push"
+alias gsl "git subtree pull"
 alias gp "git push"
 alias gr "git restore"
 
