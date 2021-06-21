@@ -315,6 +315,7 @@ alias ka "kubectl apply"
 alias kc "kubectl create"
 alias kd "kubectl describe"
 alias kg "kubectl get"
+alias kga "kubectl get all"
 alias kr "kubectl delete"
 
 # Aliases for watching kubectl commands
