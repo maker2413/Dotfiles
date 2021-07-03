@@ -5,6 +5,7 @@ cef_user_data
 dconf
 discord
 fish/fish_variables
+gtk-2.0
 libfm
 pulse
 spotify
