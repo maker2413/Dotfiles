@@ -284,7 +284,6 @@ set fish_greeting
 
 # Basic aliases
 alias brave-browser "brave"
-alias emacs "emacs -nw"
 alias em "emacs -nw"
 alias cls "clear && exa -l --icons"
 alias dev "docker run -it -v /home/epost/.ssh:/home/epost/.ssh -v (pwd):/home/epost/Code hephaestdev:latest"
@@ -344,9 +343,9 @@ if test $status -eq 1
 end
 
 # Pyenv Setup
-set -p PATH $HOME/.pyenv/bin
+status is-interactive; and pyenv init --path | source
 pyenv init - | source
-pyenv virtualenv-init - | source
+# pyenv virtualenv-init - | source
 
 # Tfenv Setup
 set -p PATH $HOME/.tfenv/bin
@@ -357,4 +356,4 @@ rbenv init - | source
 
 # Load my keybindings
 bind \cr peco_history # Bind for peco select history to Ctrl+R
-bind \cg peco_directory # Bind for peco change directory to Ctrl+F
+bind \ct peco_directory # Bind for peco change directory to Ctrl+T
