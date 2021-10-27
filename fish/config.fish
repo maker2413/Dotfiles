@@ -288,14 +288,16 @@ alias em "emacs -nw"
 alias cls "clear && exa -l --icons"
 alias dev "docker run -it -v /home/epost/.ssh:/home/epost/.ssh -v (pwd):/home/epost/Code hephaestdev:latest"
 alias journal "emacs -nw ~/Journal/"
-alias ls "exa"
+alias linecount "find . -print0 | xargs -0 cat | wc -l"
 alias ll "exa -lag --icons"
+alias ls "exa"
 alias notes "emacs -nw ~/Journal/Notes/"
 alias startdocker "sudo systemctl start docker"
 alias startssh "sudo systemctl start sshd"
 alias stopdocker "sudo systemctl stop docker"
 alias stopssh "sudo systemctl stop sshd"
 alias updates "paru -Syyu"
+alias wordcount "find . -print0 | xargs -0 cat | wc -w"
 
 # Aliases for git commands
 alias ga "git add"
@@ -333,7 +335,9 @@ alias ti "terraform init"
 alias tp "terraform plan"
 alias tw "terraform workspace"
 
-neofetch
+if [ -t 0 ]
+  neofetch
+end
 
 # SSH Agent
 pgrep ssh-agent > /dev/null
