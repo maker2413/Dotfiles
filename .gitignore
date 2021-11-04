@@ -12,12 +12,14 @@ fish/fish_variables
 gtk-2.0
 Kvantum
 libfm
+libinput-gestures.conf
 libvirt
 manjaro-hello.json
 manjaro
 mimeapps.list
 packer
 pamac
+pavucontrol.ini
 pcmanfm
 pulse
 qt5ct
