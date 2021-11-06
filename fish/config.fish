@@ -297,6 +297,7 @@ alias startssh "sudo systemctl start sshd"
 alias stopdocker "sudo systemctl stop docker"
 alias stopssh "sudo systemctl stop sshd"
 alias updates "paru -Syyu"
+alias webdev "docker run --name notes-web -v ~/Notes/WebSite:/usr/share/nginx/html:ro -p 8080:80 -d nginx"
 alias wordcount "find . -print0 | xargs -0 cat | wc -w"
 
 # Aliases for git commands
