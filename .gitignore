@@ -1,3 +1,4 @@
+autostart
 balena-etcher-electron
 BraveSoftware
 cef_user_data
@@ -10,6 +11,7 @@ evolution
 fish/fish_variables
 gedit
 GIMP
+gnome-control-center
 gnome-initial-setup-done
 gtk-2.0
 gtk-3.0
