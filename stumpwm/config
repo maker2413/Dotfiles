@@ -1,0 +1,63 @@
+;;;; STUMPWM CONFIG
+
+(in-package :stumpwm)
+
+;;; Basic Settings
+
+(set-prefix-key (kbd "s-x"))
+
+(run-shell-command "picom")
+
+(setf *mouse-focus-policy* :sloppy)
+
+;;; Keybindings
+
+(define-key STUMPWM::*tile-group-root-map* (kbd "0") "remove")
+(define-key STUMPWM::*tile-group-root-map* (kbd "1") "only")
+(define-key STUMPWM::*tile-group-root-map* (kbd "2") "vsplit")
+(define-key STUMPWM::*tile-group-root-map* (kbd "3") "hsplit")
+
+(undefine-key STUMPWM::*tile-group-root-map* (kbd "R"))
+(undefine-key STUMPWM::*tile-group-root-map* (kbd "Q"))
+(undefine-key STUMPWM::*tile-group-root-map* (kbd "s"))
+(undefine-key STUMPWM::*tile-group-root-map* (kbd "S"))
+
+(define-key *top-map* (kbd "s-1") "gselect 1")
+(define-key *top-map* (kbd "s-2") "gselect 2")
+(define-key *top-map* (kbd "s-3") "gselect 3")
+(define-key *top-map* (kbd "s-4") "gselect 4")
+(define-key *top-map* (kbd "s-5") "gselect 5")
+
+(undefine-key *root-map* (kbd "F1"))
+(undefine-key *root-map* (kbd "F2"))
+(undefine-key *root-map* (kbd "F3"))
+(undefine-key *root-map* (kbd "F4"))
+(undefine-key *root-map* (kbd "F5"))
+(undefine-key *root-map* (kbd "F6"))
+(undefine-key *root-map* (kbd "F7"))
+(undefine-key *root-map* (kbd "F8"))
+(undefine-key *root-map* (kbd "F9"))
+(undefine-key *root-map* (kbd "F10"))
+
+;;; Groups
+
+(grename "WEB")  ; 1
+(gnewbg "TERM")  ; 2
+(gnewbg "EMACS") ; 3
+(gnewbg "GAME")  ; 4
+(gnewbg "CHAT")  ; 5
+
+;;; Modeline
+
+(setf *time-modeline-string* "%a %b%d %H:%M%P")
+
+(setf *group-formt* "^B[^b^1%t^n^B]^b")
+
+(setf *screen-mode-line-format*
+      (list "%g"   ; groups
+	    "%W"   ; windows
+            "^>"   ; right align
+            "%d")) ; time/date
+
+(stumpwm:toggle-mode-line (stumpwm:current-screen)
+                          (stumpwm:current-head))
