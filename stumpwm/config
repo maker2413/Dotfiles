@@ -7,6 +7,7 @@
 (set-prefix-key (kbd "s-x"))
 
 (run-shell-command "picom")
+(run-shell-command "nitrogen --restore")
 
 (setf *mouse-focus-policy* :sloppy)
 
@@ -39,6 +40,10 @@
 (undefine-key *root-map* (kbd "F9"))
 (undefine-key *root-map* (kbd "F10"))
 
+(undefine-key *root-map* (kbd "m"))
+
+(define-key *root-map* (kbd "m") "mode-line")
+
 ;;; Groups
 
 (grename "WEB")  ; 1
@@ -51,7 +56,8 @@
 
 (setf *time-modeline-string* "%a %b%d %H:%M%P")
 
-(setf *group-formt* "^B[^b^1%t^n^B]^b")
+(setf *group-format* "^B[%t]^b")
+(setf *window-format* "%m%50t")
 
 (setf *screen-mode-line-format*
       (list "%g"   ; groups
