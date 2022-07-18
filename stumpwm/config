@@ -7,9 +7,21 @@
 (set-prefix-key (kbd "s-x"))
 
 (run-shell-command "picom")
+(run-shell-command "mons -e top")
 (run-shell-command "nitrogen --restore")
 
 (setf *mouse-focus-policy* :sloppy)
+
+;;; Font Configuration
+;;; https://config.phundrak.com/stumpwm.html
+;; (ql:quickload :clx-truetype)
+;; (load-module "ttf-fonts")
+
+;; (set-font (list (make-instance 'xft:font
+;;                                :family "Fira Code Retina"
+;;                                :subfamily "Regular"
+;;                                :size 11)))
+
 
 ;;; Keybindings
 
@@ -54,7 +66,7 @@
 
 ;;; Modeline
 
-(setf *time-modeline-string* "%a %b%d %H:%M%P")
+(setf *time-modeline-string* "^B%a %b%d %H:%M%P^b")
 
 (setf *group-format* "^B[%t]^b")
 (setf *window-format* "%m%50t")
