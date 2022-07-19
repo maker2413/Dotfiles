@@ -1,9 +1,76 @@
-#+TITLE: Linux Configs
-#+PROPERTY: header-args
+#+TITLE: Maker's Linux Configs
+#+PROPERTY: header-args: :noweb yes
+#+created: [2022-07-18 Mon 16:04]
+#+last_modified: [2022-07-19 Tue 00:54]
 
-* What is this?
+* What Is This?
   These are just my personal configs for my arch linux setup. Feel free to use or modify
   them in anyway. Please note I have included a =Xmodmap= config file to swap left ctrl
-  and left alt as that is how I like it. I know this is inconventional so I don't have
-  it setup by default. If you would like to use this keyboard config just rename the =Xmodmap=
-  file to =.Xmodmap=.
+  and left alt as that is how I like it. I know this is unconventional so I don't have
+  it setup by default. If you would like to use this keyboard config just move the =Xmodmap=
+  file to =~/.Xmodmap=.
+
+  I'm trying to update this repo to [[https://github.com/TheLocehiliosan/yadm][yadm]]. For the moment this entire repo is
+  *WIP*. With that out of the way lets build out our ~yadm~ bootstrap file.
+
+* Install arch
+  Enough said....
+
+* Execute bootstrap
+  :PROPERTIES:
+  :HEADER-ARGS: :tangle ~/.config/yadm/bootstrap :shebang "#!/bin/bash" :exports code :mkdirp yes
+  :CUSTOM_ID: ExecuteBootstrap
+  :END:
+  Since I am using ~yadm~ I can create a bootstrap file to bootstrap my
+  system. The first thing I will do is install [[https://github.com/Morganamilo/paru][paru]] my favorite AUR package
+  manager:
+  #+begin_src bash
+    sudo pacman -Sy --needed base-devel --noconfirm;
+
+    which paru > /dev/null 2>&1;
+
+    if [ $? -ne 0 ];
+    then
+      git clone https://aur.archlinux.org/paru-bin.git;
+      cd paru-bin;
+      makepkg -si --noconfirm;
+      cd ..;
+      rm -rf paru-bin;
+    fi
+
+    paru -S paru-bin --needed --noconfirm --skipreview;
+  #+end_src
+
+** Install Packages
+   With ~paru~ installed next I want to install all of the packages I use on my
+   system. Lets start by making a list of all the packages I want to install:
+   #+name: packages-list
+   | Package | Description                |
+   |---------+----------------------------|
+   | exa     | A rust implmentation of ls |
+   | fish    | An alternative shell       |
+
+   #+name: make-package-list
+   #+header: :exports none :wrap "src bash :exports none"
+   #+begin_src emacs-lisp :var packages=packages-list[,0] :tangle no
+     (concat
+      "paru -S --needed --noconfirm --skipreview \\\n"
+      (mapconcat #'identity packages " \\\n")
+      ";")
+   #+end_src
+
+   #+RESULTS: make-package-list
+   #+begin_src bash :exports none
+   paru -S --needed --noconfirm --skipreview \
+   exa \
+   fish;
+   #+end_src
+
+** Set user shell to fish
+   The fish shell is my perferred shell so I set it as my default shell.
+   #+begin_src bash
+     if [ $SHELL != '/usr/bin/fish' ];
+     then
+       chsh -s /usr/bin/fish;
+     fi
+   #+end_src
