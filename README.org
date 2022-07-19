@@ -1,7 +1,7 @@
 #+TITLE: Maker's Linux Configs
 #+PROPERTY: header-args: :noweb yes
 #+created: [2022-07-18 Mon 16:04]
-#+last_modified: [2022-07-19 Tue 00:54]
+#+last_modified: [2022-07-19 Tue 01:00]
 
 * What Is This?
   These are just my personal configs for my arch linux setup. Feel free to use or modify
@@ -45,10 +45,13 @@
    With ~paru~ installed next I want to install all of the packages I use on my
    system. Lets start by making a list of all the packages I want to install:
    #+name: packages-list
-   | Package | Description                |
-   |---------+----------------------------|
-   | exa     | A rust implmentation of ls |
-   | fish    | An alternative shell       |
+   | Package  | Description                      |
+   |----------+----------------------------------|
+   | exa      | A rust implmentation of ls       |
+   | fish     | An alternative shell             |
+   | neofetch | Provides system info in terminal |
+   | pyenv    | Manages python versions          |
+   | tfenv    | Manages terraform versions       |
 
    #+name: make-package-list
    #+header: :exports none :wrap "src bash :exports none"
@@ -63,7 +66,10 @@
    #+begin_src bash :exports none
    paru -S --needed --noconfirm --skipreview \
    exa \
-   fish;
+   fish \
+   neofetch \
+   pyenv \
+   tfenv;
    #+end_src
 
 ** Set user shell to fish
