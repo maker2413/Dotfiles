@@ -14,7 +14,83 @@
   *WIP*. With that out of the way lets build out our ~yadm~ bootstrap file.
 
 * Install arch
-  Enough said....
+  This entire section is *WIP* at the moment:
+
+  lsblk
+  fdisk /dev/vda
+  mkfs.fat -F32 /dev/vda1
+  mkswap /dev/vda2
+  swapon /dev/vda2
+  mkfs.btrfs /dev/vda3
+  mount /dev/vda3 /mnt
+  btrfs subvolume create /mnt/@
+  btrfs subvolume create /mnt/@home
+  btrfs subvolume create /mnt/@snapshots
+  btrfs subvolume create /mnt/@var_log
+  umount /mnt
+  mount -o noatime,compress=lzo,space_cache=v2,subvol=@ /dev/vda3 /mnt
+  mkdir -p /mnt/{boot,home,.snapshots,var_log}
+  mount -o noatime,compress=lzo,space_cache=v2,subvol=@home /dev/vda3 /mnt/home
+  mount -o noatime,compress=lzo,space_cache=v2,subvol=@snapshots /dev/vda3 /mnt/.snapshots
+  mount -o noatime,compress=lzo,space_cache=v2,subvol=@var_log /dev/vda3 /mnt/var_log
+  mount /dev/vda1 /mnt/boot
+  lsblk
+  basestrap /mnt base base-devel runit linux linux-firmware emacs git sudo elogind-runit
+  fstabgen -U /mnt >> /mnt/etc/fstab
+  artix-chroot /mnt
+
+  # edit pacman mirror list to prioritize US
+  emacs /etc/pacman.d/mirrorlist
+
+  # set timezone
+  ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
+  hwclock --systohc
+
+  # set locale
+  emacs /etc/locale.gen
+  locale-gen
+  emacs /etc/locale.conf
+  # LANG=en_US.UTF-8
+
+  # install networkmanager
+  pacman -S networkmanger-runit
+  # this has to be done this since we haven't booted off this machine
+  ln -s /etc/runit/sv/NetworkManger /etc/runit/runsvdir/current
+
+  # setup hostname
+  emacs /etc/hostname
+  emacs /etc/hosts
+
+  # configure mkinitcpio
+  emacs /etc/mkinitcpio.conf
+  # add the following:
+  # MODULE=(btrfs)
+  mkinitcpio -p linux
+
+  # setup grub
+  pacman -S grub efibootmgr
+  grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+  grub-mkconfig -o /boot/grub/grub.cfg
+
+  # set root passwd
+  passwd
+
+  # setup sudo
+  pacman -S sudo
+  EDITOR="emacs -nw" visudo
+
+  # create user
+  useradd -mG wheel epost
+  passwd epost
+
+  With all of that done we can reboot into our new system.
+
+* Installing yadm
+  git clone https://aur.archlinux.org/yadm
+  cd yadm
+  makepkg -si
+  cd ..
+  rm -rf yadm
 
 * Execute bootstrap
   :PROPERTIES:
@@ -45,13 +121,14 @@
    With ~paru~ installed next I want to install all of the packages I use on my
    system. Lets start by making a list of all the packages I want to install:
    #+name: packages-list
-   | Package  | Description                      |
-   |----------+----------------------------------|
-   | exa      | A rust implmentation of ls       |
-   | fish     | An alternative shell             |
-   | neofetch | Provides system info in terminal |
-   | pyenv    | Manages python versions          |
-   | tfenv    | Manages terraform versions       |
+   | Package       | Description                      |
+   |---------------+----------------------------------|
+   | exa           | A rust implmentation of ls       |
+   | fish          | An alternative shell             |
+   | openssh-runit | Open ssh for runit               |
+   | neofetch      | Provides system info in terminal |
+   | pyenv         | Manages python versions          |
+   | tfenv         | Manages terraform versions       |
 
    #+name: make-package-list
    #+header: :exports none :wrap "src bash :exports none"
@@ -67,6 +144,7 @@
    paru -S --needed --noconfirm --skipreview \
    exa \
    fish \
+   openssh-runit \
    neofetch \
    pyenv \
    tfenv;
@@ -79,4 +157,10 @@
      then
        chsh -s /usr/bin/fish;
      fi
+   #+end_src
+
+** Enable services
+   Enable services with runit.
+   #+begin_src bash
+     ln -s /etc/runit/sv/sshd /run/runit/service/
    #+end_src

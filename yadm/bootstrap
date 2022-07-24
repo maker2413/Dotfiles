@@ -17,6 +17,7 @@ paru -S paru-bin --needed --noconfirm --skipreview;
 paru -S --needed --noconfirm --skipreview \
 exa \
 fish \
+openssh-runit \
 neofetch \
 pyenv \
 tfenv;
@@ -25,3 +26,5 @@ if [ $SHELL != '/usr/bin/fish' ];
 then
   chsh -s /usr/bin/fish;
 fi
+
+ln -s /etc/runit/sv/sshd /run/runit/service/
