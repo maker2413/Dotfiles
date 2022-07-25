@@ -1,7 +1,7 @@
 #+TITLE: Maker's Linux Configs
 #+PROPERTY: header-args: :noweb yes
 #+created: [2022-07-18 Mon 16:04]
-#+last_modified: [2022-07-19 Tue 01:00]
+#+last_modified: [2022-07-25 Mon 10:11]
 
 * What Is This?
   These are just my personal configs for my arch linux setup. Feel free to use or modify
@@ -153,7 +153,7 @@
 ** Set user shell to fish
    The fish shell is my perferred shell so I set it as my default shell.
    #+begin_src bash
-     if [ $SHELL != '/usr/bin/fish' ];
+     if [[ $(cat /etc/passwd | grep epost | awk -F: '{print $7}') != '/usr/bin/fish' ]];
      then
        chsh -s /usr/bin/fish;
      fi
@@ -162,5 +162,8 @@
 ** Enable services
    Enable services with runit.
    #+begin_src bash
-     ln -s /etc/runit/sv/sshd /run/runit/service/
+     if [ ! -L /run/runit/service/sshd ];
+     then
+       sudo ln -s /etc/runit/sv/sshd /run/runit/service/
+     fi
    #+end_src

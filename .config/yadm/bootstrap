@@ -22,9 +22,12 @@ neofetch \
 pyenv \
 tfenv;
 
-if [ $SHELL != '/usr/bin/fish' ];
+if [[ $(cat /etc/passwd | grep epost | awk -F: '{print $7}') != '/usr/bin/fish' ]];
 then
   chsh -s /usr/bin/fish;
 fi
 
-ln -s /etc/runit/sv/sshd /run/runit/service/
+if [ ! -L /run/runit/service/sshd ];
+then
+  sudo ln -s /etc/runit/sv/sshd /run/runit/service/
+fi

@@ -315,6 +315,17 @@ alias gsl "git subtree pull"
 alias gp "git push"
 alias gr "git restore"
 
+# Aliases for yadm commands
+alias ya "yadm add"
+alias yc "yadm commit"
+alias ych "yadm checkout"
+alias ycm "yadm checkout master"
+alias yd "yadm diff"
+alias yl "yadm pull"
+alias ys "yadm status"
+alias yp "yadm push"
+alias yr "yadm restore"
+
 # Aliases for kubectl commands
 alias ka "kubectl apply"
 alias kc "kubectl create"
