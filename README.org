@@ -1,7 +1,7 @@
 #+TITLE: Maker's Linux Configs
 #+PROPERTY: header-args: :noweb yes
 #+created: [2022-07-18 Mon 16:04]
-#+last_modified: [2022-07-25 Mon 10:11]
+#+last_modified: [2022-07-25 Mon 11:37]
 
 * What Is This?
   These are just my personal configs for my arch linux setup. Feel free to use or modify
@@ -83,6 +83,16 @@
   useradd -mG wheel epost
   passwd epost
 
+  # enable universe repo
+  emacs /etc/pacman.conf
+    [universe]
+    Server = https://universe.artixlinux.org/$arch
+    Server = https://mirror1.artixlinux.org/universe/$arch
+    Server = https://mirror.pascalpuffke.de/artix-universe/$arch
+    Server = https://artixlinux.qontinuum.space/artixlinux/universe/os/$arch
+    Server = https://mirror1.cl.netactuate.com/artix/universe/$arch
+    Server = https://ftp.crifo.org/artix-universe/
+
   With all of that done we can reboot into our new system.
 
 * Installing yadm
@@ -117,18 +127,34 @@
     paru -S paru-bin --needed --noconfirm --skipreview;
   #+end_src
 
+** Install artix-archlinux-support
+   The `artix-archlinux-support` package adds a repo containing some of the
+   packages available on arch, but not yet on artix:
+   #+begin_src bash
+     sudo pacman -Sy --needed artix-archlinux-support --noconfirm
+
+     
+   #+end_src
+
 ** Install Packages
    With ~paru~ installed next I want to install all of the packages I use on my
    system. Lets start by making a list of all the packages I want to install:
    #+name: packages-list
-   | Package       | Description                      |
-   |---------------+----------------------------------|
-   | exa           | A rust implmentation of ls       |
-   | fish          | An alternative shell             |
-   | openssh-runit | Open ssh for runit               |
-   | neofetch      | Provides system info in terminal |
-   | pyenv         | Manages python versions          |
-   | tfenv         | Manages terraform versions       |
+   | Package              | Description                      |
+   |----------------------+----------------------------------|
+   | brave-bin            | My favorite web browser          |
+   | exa                  | A rust implmentation of ls       |
+   | fish                 | An alternative shell             |
+   | gdm-runit            | Gnome display manager            |
+   | gnome-control-center | Gnome configuration              |
+   | gnome-shell          | Gnome desktop environment        |
+   | gnome-tweaks         | Tweaks for Gnome                 |
+   | ispell               |                                  |
+   | openssh-runit        | Open ssh for runit               |
+   | neofetch             | Provides system info in terminal |
+   | pyenv                | Manages python versions          |
+   | tfenv                | Manages terraform versions       |
+   | ttf-fira-code        | My font for emacs                |
 
    #+name: make-package-list
    #+header: :exports none :wrap "src bash :exports none"
@@ -142,12 +168,19 @@
    #+RESULTS: make-package-list
    #+begin_src bash :exports none
    paru -S --needed --noconfirm --skipreview \
+   brave-bin \
    exa \
    fish \
+   gdm-runit \
+   gnome-control-center \
+   gnome-shell \
+   gnome-tweaks \
+   ispell \
    openssh-runit \
    neofetch \
    pyenv \
-   tfenv;
+   tfenv \
+   ttf-fira-code;
    #+end_src
 
 ** Set user shell to fish
@@ -165,5 +198,10 @@
      if [ ! -L /run/runit/service/sshd ];
      then
        sudo ln -s /etc/runit/sv/sshd /run/runit/service/
+     fi
+
+     if [ ! -L /run/runit/service/gdm ];
+     then
+       sudo ln -s /etc/runit/sv/gdm /run/runit/service/
      fi
    #+end_src

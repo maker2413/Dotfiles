@@ -14,13 +14,22 @@ fi
 
 paru -S paru-bin --needed --noconfirm --skipreview;
 
+sudo pacman -Sy --needed artix-archlinux-support --noconfirm
+
 paru -S --needed --noconfirm --skipreview \
+brave-bin \
 exa \
 fish \
+gdm-runit \
+gnome-control-center \
+gnome-shell \
+gnome-tweaks \
+ispell \
 openssh-runit \
 neofetch \
 pyenv \
-tfenv;
+tfenv \
+ttf-fira-code;
 
 if [[ $(cat /etc/passwd | grep epost | awk -F: '{print $7}') != '/usr/bin/fish' ]];
 then
@@ -30,4 +39,9 @@ fi
 if [ ! -L /run/runit/service/sshd ];
 then
   sudo ln -s /etc/runit/sv/sshd /run/runit/service/
+fi
+
+if [ ! -L /run/runit/service/gdm ];
+then
+  sudo ln -s /etc/runit/sv/gdm /run/runit/service/
 fi
