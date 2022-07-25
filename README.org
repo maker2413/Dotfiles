@@ -1,7 +1,7 @@
 #+TITLE: Maker's Linux Configs
 #+PROPERTY: header-args: :noweb yes
 #+created: [2022-07-18 Mon 16:04]
-#+last_modified: [2022-07-25 Mon 15:17]
+#+last_modified: [2022-07-25 Mon 15:39]
 
 * What Is This?
   These are just my personal configs for my arch linux setup. Feel free to use or modify
@@ -224,6 +224,12 @@
      then
        sudo ln -s /etc/runit/sv/gdm /run/runit/service/
      fi
+   #+end_src
+
+** User Groups
+   Next lets add my user to the groups I need:
+   #+begin_src bash
+     sudo usermod -aG tfenv epost
    #+end_src
 
 ** Update NetworkManger config

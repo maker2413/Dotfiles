@@ -13,7 +13,9 @@
 .lesshst
 .local
 .pki
+.pyenv
 .ssh
+.terraform.d
 Downloads
 Notes
 Pictures
