@@ -72,6 +72,6 @@ then
   sudo ln -s /etc/runit/sv/gdm /run/runit/service/
 fi
 
-grep -qxF 'auth-polkit=false' /etc/pacman.conf || sudo tee -a /etc/pacman.conf >/dev/null << 'EOF'
+grep -qxF 'auth-polkit=false' /etc/NetworkManager/NetworkManager.conf || sudo tee -a /etc/NetworkManager/NetworkManager.conf >/dev/null << 'EOF'
 auth-polkit=false
 EOF
