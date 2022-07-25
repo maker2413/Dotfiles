@@ -55,7 +55,8 @@ neofetch \
 pyenv \
 tfenv \
 ttf-fira-code \
-yadm;
+yadm \
+yamllint;
 
 if [[ $(cat /etc/passwd | grep epost | awk -F: '{print $7}') != '/usr/bin/fish' ]];
 then
