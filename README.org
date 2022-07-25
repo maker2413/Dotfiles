@@ -1,7 +1,7 @@
 #+TITLE: Maker's Linux Configs
 #+PROPERTY: header-args: :noweb yes
 #+created: [2022-07-18 Mon 16:04]
-#+last_modified: [2022-07-25 Mon 15:39]
+#+last_modified: [2022-07-25 Mon 18:54]
 
 * What Is This?
   These are just my personal configs for my arch linux setup. Feel free to use or modify
@@ -132,7 +132,7 @@
      Server = https://ftp.crifo.org/artix-universe/
      EOF
 
-     sudo pacman -Sy --needed artix-archlinux-support --noconfirm
+     sudo pacman -Sy --needed artix-archlinux-support --noconfirm;
 
      grep -qxF '# Arch' /etc/pacman.conf || sudo tee -a /etc/pacman.conf >/dev/null << 'EOF'
 
@@ -214,22 +214,56 @@
 
 ** Enable services
    Enable services with runit.
-   #+begin_src bash
-     if [ ! -L /run/runit/service/sshd ];
-     then
-       sudo ln -s /etc/runit/sv/sshd /run/runit/service/
-     fi
+   #+name: services-list
+   | Group | Description              |
+   |-------+--------------------------|
+   | sshd  | SSH server               |
+   | gdm   | Gnome display management |
 
-     if [ ! -L /run/runit/service/gdm ];
-     then
-       sudo ln -s /etc/runit/sv/gdm /run/runit/service/
-     fi
+   #+name: make-services-list
+   #+header: :exports none :wrap "src bash :exports none"
+   #+begin_src emacs-lisp :var services=services-list[,0] :tangle no
+     (mapconcat (lambda (x) (concat
+                             (format "if [ ! -L /run/runit/service/%s ];\n" x)
+                             "then\n"
+                             (format "  sudo ln -s /etc/runit/sv/%s /run/runit/service/;\n" x)
+                             "fi\n"))
+                  services
+                  "\n")
+   #+end_src
+
+   #+RESULTS: make-services-list
+   #+begin_src bash :exports none
+   if [ ! -L /run/runit/service/sshd ];
+   then
+     sudo ln -s /etc/runit/sv/sshd /run/runit/service/;
+   fi
+
+   if [ ! -L /run/runit/service/gdm ];
+   then
+     sudo ln -s /etc/runit/sv/gdm /run/runit/service/;
+   fi
    #+end_src
 
 ** User Groups
    Next lets add my user to the groups I need:
-   #+begin_src bash
-     sudo usermod -aG tfenv epost
+   #+name: groups-list
+   | Group | Description                   |
+   |-------+-------------------------------|
+   | tfenv | My favorite terminal emulator |
+
+   #+name: make-groups-list
+   #+header: :exports none :wrap "src bash :exports none"
+   #+begin_src emacs-lisp :var groups=groups-list[,0] :tangle no
+     (concat
+      "sudo usermod -aG "
+      (mapconcat #'identity groups ",")
+      " epost")
+   #+end_src
+
+   #+RESULTS: make-groups-list
+   #+begin_src bash :exports none
+   sudo usermod -aG tfenv epost;
    #+end_src
 
 ** Update NetworkManger config

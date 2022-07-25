@@ -24,7 +24,7 @@ Server = https://mirror1.cl.netactuate.com/artix/universe/$arch
 Server = https://ftp.crifo.org/artix-universe/
 EOF
 
-sudo pacman -Sy --needed artix-archlinux-support --noconfirm
+sudo pacman -Sy --needed artix-archlinux-support --noconfirm;
 
 grep -qxF '# Arch' /etc/pacman.conf || sudo tee -a /etc/pacman.conf >/dev/null << 'EOF'
 
@@ -65,15 +65,15 @@ fi
 
 if [ ! -L /run/runit/service/sshd ];
 then
-  sudo ln -s /etc/runit/sv/sshd /run/runit/service/
+  sudo ln -s /etc/runit/sv/sshd /run/runit/service/;
 fi
 
 if [ ! -L /run/runit/service/gdm ];
 then
-  sudo ln -s /etc/runit/sv/gdm /run/runit/service/
+  sudo ln -s /etc/runit/sv/gdm /run/runit/service/;
 fi
 
-sudo usermod -aG tfenv epost
+sudo usermod -aG tfenv epost;
 
 grep -qxF 'auth-polkit=false' /etc/NetworkManager/NetworkManager.conf || sudo tee -a /etc/NetworkManager/NetworkManager.conf >/dev/null << 'EOF'
 auth-polkit=false
