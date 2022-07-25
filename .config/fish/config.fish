@@ -317,6 +317,7 @@ alias gr "git restore"
 
 # Aliases for yadm commands
 alias ya "yadm add"
+alias yb "yadm bootstrap"
 alias yc "yadm commit"
 alias ych "yadm checkout"
 alias ycm "yadm checkout master"

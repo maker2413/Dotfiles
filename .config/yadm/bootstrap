@@ -14,14 +14,39 @@ fi
 
 paru -S paru-bin --needed --noconfirm --skipreview;
 
+grep -qxF '[universe]' /etc/pacman.conf || sudo tee -a /etc/pacman.conf >/dev/null << 'EOF'
+[universe]
+Server = https://universe.artixlinux.org/$arch
+Server = https://mirror1.artixlinux.org/universe/$arch
+Server = https://mirror.pascalpuffke.de/artix-universe/$arch
+Server = https://artixlinux.qontinuum.space/artixlinux/universe/os/$arch
+Server = https://mirror1.cl.netactuate.com/artix/universe/$arch
+Server = https://ftp.crifo.org/artix-universe/
+EOF
+
 sudo pacman -Sy --needed artix-archlinux-support --noconfirm
 
+grep -qxF '# Arch' /etc/pacman.conf || sudo tee -a /etc/pacman.conf >/dev/null << 'EOF'
+
+# Arch
+[extra]
+Include = /etc/pacman.d/mirrorlist-arch
+
+[community]
+Include = /etc/pacman.d/mirrorlist-arch
+
+[multilib]
+Include = /etc/pacman.d/mirrorlist-arch
+EOF
+
 paru -S --needed --noconfirm --skipreview \
+alacritty \
 brave-bin \
 exa \
 fish \
 gdm-runit \
 gnome-control-center \
+gnome-keyring \
 gnome-shell \
 gnome-tweaks \
 ispell \
@@ -29,7 +54,8 @@ openssh-runit \
 neofetch \
 pyenv \
 tfenv \
-ttf-fira-code;
+ttf-fira-code \
+yadm;
 
 if [[ $(cat /etc/passwd | grep epost | awk -F: '{print $7}') != '/usr/bin/fish' ]];
 then
@@ -45,3 +71,7 @@ if [ ! -L /run/runit/service/gdm ];
 then
   sudo ln -s /etc/runit/sv/gdm /run/runit/service/
 fi
+
+grep -qxF 'auth-polkit=false' /etc/pacman.conf || sudo tee -a /etc/pacman.conf >/dev/null << 'EOF'
+auth-polkit=false
+EOF

@@ -1,7 +1,7 @@
 #+TITLE: Maker's Linux Configs
 #+PROPERTY: header-args: :noweb yes
 #+created: [2022-07-18 Mon 16:04]
-#+last_modified: [2022-07-25 Mon 11:37]
+#+last_modified: [2022-07-25 Mon 14:07]
 
 * What Is This?
   These are just my personal configs for my arch linux setup. Feel free to use or modify
@@ -83,16 +83,6 @@
   useradd -mG wheel epost
   passwd epost
 
-  # enable universe repo
-  emacs /etc/pacman.conf
-    [universe]
-    Server = https://universe.artixlinux.org/$arch
-    Server = https://mirror1.artixlinux.org/universe/$arch
-    Server = https://mirror.pascalpuffke.de/artix-universe/$arch
-    Server = https://artixlinux.qontinuum.space/artixlinux/universe/os/$arch
-    Server = https://mirror1.cl.netactuate.com/artix/universe/$arch
-    Server = https://ftp.crifo.org/artix-universe/
-
   With all of that done we can reboot into our new system.
 
 * Installing yadm
@@ -127,13 +117,35 @@
     paru -S paru-bin --needed --noconfirm --skipreview;
   #+end_src
 
-** Install artix-archlinux-support
-   The `artix-archlinux-support` package adds a repo containing some of the
-   packages available on arch, but not yet on artix:
+** Configure pacman
+   In this section I am going to enable the universe artix repository We are
+   also going to install the ~artix-archlinux-support~ package, which adds some
+   of the repositories arch linux has, but are not yet on artix:
    #+begin_src bash
+     grep -qxF '[universe]' /etc/pacman.conf || sudo tee -a /etc/pacman.conf >/dev/null << 'EOF'
+     [universe]
+     Server = https://universe.artixlinux.org/$arch
+     Server = https://mirror1.artixlinux.org/universe/$arch
+     Server = https://mirror.pascalpuffke.de/artix-universe/$arch
+     Server = https://artixlinux.qontinuum.space/artixlinux/universe/os/$arch
+     Server = https://mirror1.cl.netactuate.com/artix/universe/$arch
+     Server = https://ftp.crifo.org/artix-universe/
+     EOF
+
      sudo pacman -Sy --needed artix-archlinux-support --noconfirm
 
-     
+     grep -qxF '# Arch' /etc/pacman.conf || sudo tee -a /etc/pacman.conf >/dev/null << 'EOF'
+
+     # Arch
+     [extra]
+     Include = /etc/pacman.d/mirrorlist-arch
+
+     [community]
+     Include = /etc/pacman.d/mirrorlist-arch
+
+     [multilib]
+     Include = /etc/pacman.d/mirrorlist-arch
+     EOF
    #+end_src
 
 ** Install Packages
@@ -142,11 +154,13 @@
    #+name: packages-list
    | Package              | Description                      |
    |----------------------+----------------------------------|
+   | alacritty            | My favorite terminal emulator    |
    | brave-bin            | My favorite web browser          |
    | exa                  | A rust implmentation of ls       |
    | fish                 | An alternative shell             |
    | gdm-runit            | Gnome display manager            |
    | gnome-control-center | Gnome configuration              |
+   | gnome-keyring        | Keyring for Gnome                |
    | gnome-shell          | Gnome desktop environment        |
    | gnome-tweaks         | Tweaks for Gnome                 |
    | ispell               |                                  |
@@ -155,6 +169,7 @@
    | pyenv                | Manages python versions          |
    | tfenv                | Manages terraform versions       |
    | ttf-fira-code        | My font for emacs                |
+   | yadm                 | Used to manage my dot files      |
 
    #+name: make-package-list
    #+header: :exports none :wrap "src bash :exports none"
@@ -168,11 +183,13 @@
    #+RESULTS: make-package-list
    #+begin_src bash :exports none
    paru -S --needed --noconfirm --skipreview \
+   alacritty \
    brave-bin \
    exa \
    fish \
    gdm-runit \
    gnome-control-center \
+   gnome-keyring \
    gnome-shell \
    gnome-tweaks \
    ispell \
@@ -180,7 +197,8 @@
    neofetch \
    pyenv \
    tfenv \
-   ttf-fira-code;
+   ttf-fira-code \
+   yadm;
    #+end_src
 
 ** Set user shell to fish
@@ -204,4 +222,13 @@
      then
        sudo ln -s /etc/runit/sv/gdm /run/runit/service/
      fi
+   #+end_src
+
+** Update NetworkManger config
+   This section is just to disable ~auth-polkit~ for ~NetworkManger~ because I
+   have encountered authentication errors with artix:
+   #+begin_src bash
+     grep -qxF 'auth-polkit=false' /etc/pacman.conf || sudo tee -a /etc/pacman.conf >/dev/null << 'EOF'
+     auth-polkit=false
+     EOF
    #+end_src
