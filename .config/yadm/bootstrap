@@ -41,6 +41,7 @@ EOF
 
 paru -S --needed --noconfirm --skipreview \
 alacritty \
+bluez-runit \
 brave-bin \
 exa \
 fish \
@@ -49,10 +50,14 @@ gnome-control-center \
 gnome-keyring \
 gnome-shell \
 gnome-tweaks \
+htop \
 ispell \
-openssh-runit \
+man-db \
 neofetch \
+ntp-runit \
+openssh-runit \
 pyenv \
+ripgrep \
 tfenv \
 ttf-fira-code \
 yadm \
@@ -63,14 +68,19 @@ then
   chsh -s /usr/bin/fish;
 fi
 
-if [ ! -L /run/runit/service/sshd ];
-then
-  sudo ln -s /etc/runit/sv/sshd /run/runit/service/;
-fi
-
 if [ ! -L /run/runit/service/gdm ];
 then
   sudo ln -s /etc/runit/sv/gdm /run/runit/service/;
+fi
+
+if [ ! -L /run/runit/service/ntpd ];
+then
+  sudo ln -s /etc/runit/sv/ntpd /run/runit/service/;
+fi
+
+if [ ! -L /run/runit/service/sshd ];
+then
+  sudo ln -s /etc/runit/sv/sshd /run/runit/service/;
 fi
 
 sudo usermod -aG tfenv epost;

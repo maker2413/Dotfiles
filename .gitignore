@@ -8,6 +8,7 @@
 .config/dconf
 .config/fish/fish_variables
 .config/gnome-control-center/backgrounds
+.config/LBRY
 .config/pulse
 .gitconfig
 .lesshst
@@ -16,6 +17,7 @@
 .pyenv
 .ssh
 .terraform.d
+Code
 Downloads
 Notes
 Pictures

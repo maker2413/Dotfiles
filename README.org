@@ -1,7 +1,7 @@
 #+TITLE: Maker's Linux Configs
 #+PROPERTY: header-args: :noweb yes
 #+created: [2022-07-18 Mon 16:04]
-#+last_modified: [2022-07-25 Mon 18:54]
+#+last_modified: [2022-07-30 Sat 19:51]
 
 * What Is This?
   These are just my personal configs for my arch linux setup. Feel free to use or modify
@@ -152,25 +152,30 @@
    With ~paru~ installed next I want to install all of the packages I use on my
    system. Lets start by making a list of all the packages I want to install:
    #+name: packages-list
-   | Package              | Description                      |
-   |----------------------+----------------------------------|
-   | alacritty            | My favorite terminal emulator    |
-   | brave-bin            | My favorite web browser          |
-   | exa                  | A rust implmentation of ls       |
-   | fish                 | An alternative shell             |
-   | gdm-runit            | Gnome display manager            |
-   | gnome-control-center | Gnome configuration              |
-   | gnome-keyring        | Keyring for Gnome                |
-   | gnome-shell          | Gnome desktop environment        |
-   | gnome-tweaks         | Tweaks for Gnome                 |
-   | ispell               |                                  |
-   | openssh-runit        | Open ssh for runit               |
-   | neofetch             | Provides system info in terminal |
-   | pyenv                | Manages python versions          |
-   | tfenv                | Manages terraform versions       |
-   | ttf-fira-code        | My font for emacs                |
-   | yadm                 | Used to manage my dot files      |
-   | yamllint             | Linter for yaml files            |
+   | Package              | Description                        |
+   |----------------------+------------------------------------|
+   | alacritty            | My favorite terminal emulator      |
+   | bluez-runit          | Manages bluetooth devices          |
+   | brave-bin            | My favorite web browser            |
+   | exa                  | A rust implmentation of ls         |
+   | fish                 | An alternative shell               |
+   | gdm-runit            | Gnome display manager              |
+   | gnome-control-center | Gnome configuration                |
+   | gnome-keyring        | Keyring for Gnome                  |
+   | gnome-shell          | Gnome desktop environment          |
+   | gnome-tweaks         | Tweaks for Gnome                   |
+   | htop                 | Task manager                       |
+   | ispell               | Spell checker                      |
+   | man-db               | Man page database                  |
+   | neofetch             | Provides system info in terminal   |
+   | ntp-runit            | Used to sync time via the internet |
+   | openssh-runit        | Open ssh for runit                 |
+   | pyenv                | Manages python versions            |
+   | ripgrep              | A rust implementation of grep      |
+   | tfenv                | Manages terraform versions         |
+   | ttf-fira-code        | My font for emacs                  |
+   | yadm                 | Used to manage my dot files        |
+   | yamllint             | Linter for yaml files              |
 
    #+name: make-package-list
    #+header: :exports none :wrap "src bash :exports none"
@@ -185,6 +190,7 @@
    #+begin_src bash :exports none
    paru -S --needed --noconfirm --skipreview \
    alacritty \
+   bluez-runit \
    brave-bin \
    exa \
    fish \
@@ -193,10 +199,14 @@
    gnome-keyring \
    gnome-shell \
    gnome-tweaks \
+   htop \
    ispell \
-   openssh-runit \
+   man-db \
    neofetch \
+   ntp-runit \
+   openssh-runit \
    pyenv \
+   ripgrep \
    tfenv \
    ttf-fira-code \
    yadm \
@@ -217,8 +227,9 @@
    #+name: services-list
    | Group | Description              |
    |-------+--------------------------|
-   | sshd  | SSH server               |
    | gdm   | Gnome display management |
+   | ntpd  | Daemon for ntp           |
+   | sshd  | SSH server               |
 
    #+name: make-services-list
    #+header: :exports none :wrap "src bash :exports none"
@@ -234,14 +245,19 @@
 
    #+RESULTS: make-services-list
    #+begin_src bash :exports none
-   if [ ! -L /run/runit/service/sshd ];
-   then
-     sudo ln -s /etc/runit/sv/sshd /run/runit/service/;
-   fi
-
    if [ ! -L /run/runit/service/gdm ];
    then
      sudo ln -s /etc/runit/sv/gdm /run/runit/service/;
+   fi
+
+   if [ ! -L /run/runit/service/ntpd ];
+   then
+     sudo ln -s /etc/runit/sv/ntpd /run/runit/service/;
+   fi
+
+   if [ ! -L /run/runit/service/sshd ];
+   then
+     sudo ln -s /etc/runit/sv/sshd /run/runit/service/;
    fi
    #+end_src
 
