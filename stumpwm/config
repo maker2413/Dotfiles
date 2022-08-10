@@ -1,3 +1,5 @@
+;; -*- lisp -*-
+
 ;;;; STUMPWM CONFIG
 
 (in-package :stumpwm)
@@ -6,11 +8,10 @@
 
 (set-prefix-key (kbd "s-x"))
 
-(run-shell-command "picom")
-(run-shell-command "mons -e top")
-(run-shell-command "nitrogen --restore")
-
 (setf *mouse-focus-policy* :sloppy)
+
+;;; Monitor configuration
+;;(run-shell-command "mons -e top")
 
 ;;; Font Configuration
 ;;; https://config.phundrak.com/stumpwm.html
@@ -52,6 +53,10 @@
 (undefine-key *root-map* (kbd "F9"))
 (undefine-key *root-map* (kbd "F10"))
 
+(undefine-key *root-map* (kbd "!"))
+
+(define-key *root-map* (kbd "s-f") "exec")
+
 (undefine-key *root-map* (kbd "m"))
 
 (define-key *root-map* (kbd "m") "mode-line")
@@ -62,11 +67,11 @@
 
 ;;; Groups
 
-(grename "WEB")  ; 1
-(gnewbg "TERM")  ; 2
-(gnewbg "EMACS") ; 3
-(gnewbg "GAME")  ; 4
-(gnewbg "CHAT")  ; 5
+(grename "1")
+(gnewbg "2")
+(gnewbg "3")
+(gnewbg "4")
+(gnewbg "5")
 
 ;;; Modeline
 
@@ -83,3 +88,7 @@
 
 (stumpwm:toggle-mode-line (stumpwm:current-screen)
                           (stumpwm:current-head))
+
+;;; Autostart programs
+(run-shell-command "picom")
+(run-shell-command "nitrogen --restore")
