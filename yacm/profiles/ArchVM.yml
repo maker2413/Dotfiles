@@ -1,0 +1,50 @@
+---
+name: ArchVM
+hostname: archyacmtest
+
+# Here you can define any custom made executable scripts
+# that you would like to have run before moving on to
+# package installation.
+initial_scripts:
+  - install_paru.sh
+
+package_manager: paru
+packages:
+  - alacritty
+  - base-devel
+  - brave-bin
+  - emacs
+  - exa
+  - fish
+  - gdm
+  - git
+  - gnome-control-center
+  - gnome-keyringh
+  - gnome-shell
+  - gnome-tweaks
+  - htop
+  - ispell
+  - man-db
+  - neofetch
+  - openssh
+  - pyenv
+  - ripgrep
+  - sudo
+  - tfenv
+  - ttf-fira-code
+
+# Here you can define any custom made executable scripts
+# that you would like to have run before moving on to
+# enabling services.
+midway_scripts:
+  - set_user_shell_fish.sh
+
+init_system: systemd
+services:
+  - gdm
+  - sshd
+
+# Here you can define any custom made executable scripts
+# that you would like to have run as a final bootstrap
+# step.
+# final_scripts:
