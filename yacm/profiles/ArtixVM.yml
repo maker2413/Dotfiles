@@ -1,11 +1,12 @@
 ---
-name: ArchVM
-hostname: archyacmtest
+name: ArtixVM
+hostname: artixyacmtest
 
 # Here you can define any custom made executable scripts
 # that you would like to have run before moving on to
 # package installation.
 initial_scripts:
+  - artix_configure_pacman.sh
   - install_paru.sh
 
 package_manager: paru
@@ -16,7 +17,7 @@ packages:
   - emacs
   - exa
   - fish
-  - gdm
+  - gdm-runit
   - git
   - gnome-control-center
   - gnome-keyring
@@ -26,7 +27,7 @@ packages:
   - ispell
   - man-db
   - neofetch
-  - openssh
+  - openssh-runit
   - pyenv
   - ripgrep
   - sudo
@@ -39,10 +40,10 @@ packages:
 midway_scripts:
   - set_user_shell_fish.sh
 
-init_system: systemd
+init_system: runit
 services:
-  - gdm
   - sshd
+  - gdm
 
 # Here you can define any custom made executable scripts
 # that you would like to have run as a final bootstrap
