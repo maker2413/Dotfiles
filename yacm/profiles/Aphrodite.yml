@@ -1,0 +1,38 @@
+---
+name: Aphrodite
+hostname: Aphrodite
+
+# Here you can define any custom made executable scripts
+# that you would like to have run before moving on to
+# package installation.
+initial_scripts:
+  - artix_configure_pacman.sh
+  - install_paru.sh
+
+package_manager: paru
+packages:
+  - emacs
+  - exa
+  - fish
+  - git
+  - neofetch
+  - networkmanager-runit
+  - openssh-runit
+  - pyenv
+  - sudo
+  - tfenv
+
+# Here you can define any custom made executable scripts
+# that you would like to have run before moving on to
+# enabling services.
+midway_scripts:
+  - set_user_shell_fish.sh
+
+init_system: runit
+services:
+  - NetworkManager
+
+# Here you can define any custom made executable scripts
+# that you would like to have run as a final bootstrap
+# step.
+# final_scripts:

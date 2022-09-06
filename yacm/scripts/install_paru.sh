@@ -1,9 +1,8 @@
 #!/bin/sh
 
-which paru > /dev/null 2>&1;
+set -e;
 
-if [ $? -ne 0 ];
-then
+if [ ! "$(which paru 2> /dev/null)" ]; then
   sudo pacman -Sy base-devel --needed --noconfirm;
   git clone https://aur.archlinux.org/paru-bin.git;
   cd paru-bin;

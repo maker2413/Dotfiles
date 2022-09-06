@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 grep -qxF '[universe]' /etc/pacman.conf || sudo tee -a /etc/pacman.conf >/dev/null << 'EOF'
 [universe]
 Server = https://universe.artixlinux.org/$arch
