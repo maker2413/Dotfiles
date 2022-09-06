@@ -1,7 +1,7 @@
 #+TITLE: Maker's Linux Configs
 #+PROPERTY: header-args: :noweb yes
 #+created: [2022-07-18 Mon 16:04]
-#+last_modified: [2022-07-30 Sat 19:51]
+#+last_modified: [2022-09-05 Mon 17:23]
 
 * What Is This?
   These are just my personal configs for my arch linux setup. Feel free to use or modify
@@ -82,6 +82,29 @@
   # create user
   useradd -mG wheel epost
   passwd epost
+
+** Extra Notes
+   To setup snapper run the following:
+   - sudo umount /.snapshots
+   - sudo rm -r /.snapshots
+   - sudo snapper -c root create-config /
+   - sudo btrfs subvolume delete /.snapshots
+   - sudo mkdir /.snapshots
+   - sudo mount -a
+   - sudo chmod 750 /.snapshots
+
+   Finally edit /etc/snapper/configs/root to add your user to ALLOWS_USERS and
+   ALLOW_GROUPS. Optionally I also set the following for TIMELINE settings:
+   # limits for timeline cleanup
+   TIMELINE_MIN_AGE="1800"
+   TIMELINE_LIMIT_HOURLY="5"
+   TIMELINE_LIMIT_DAILY="7"
+   TIMELINE_LIMIT_WEEKLY="0"
+   TIMELINE_LIMIT_MONTHLY="0"
+   TIMELINE_LIMIT_YEARLY="0"
+
+   For timeline features to work some time of cron daemon should be installed
+   like cronie.
 
   With all of that done we can reboot into our new system.
 
