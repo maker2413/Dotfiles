@@ -4,10 +4,12 @@ balena-etcher-electron
 BraveSoftware
 cef_user_data
 Clementine
+cni
 dconf
 deluge
 discord
 dleyna-renderer-service.conf
+Element
 enchant
 evolution
 filezilla
@@ -34,6 +36,8 @@ pulse
 QtProject.conf
 spotify
 StardewValley
+totem
+unity3d
 user-dirs.dirs
 user-dirs.locale
 virt-viewer

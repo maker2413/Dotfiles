@@ -92,3 +92,6 @@
 ;;; Autostart programs
 (run-shell-command "picom")
 (run-shell-command "nitrogen --restore")
+
+(define-fullscreen-in-frame-rule my-default-rule (win)
+  t)

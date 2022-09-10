@@ -357,7 +357,3 @@ pyenv init - | source
 
 # Tfenv Setup
 set -p PATH $HOME/.tfenv/bin
-
-# Load my keybindings
-bind \cr peco_history # Bind for peco select history to Ctrl+R
-bind \ct peco_directory # Bind for peco change directory to Ctrl+T
