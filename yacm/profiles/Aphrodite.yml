@@ -2,37 +2,62 @@
 name: Aphrodite
 hostname: Aphrodite
 
-# Here you can define any custom made executable scripts
-# that you would like to have run before moving on to
-# package installation.
+# Here you can define any custom made executable scripts or commands that
+# you would like to have run before moving on to package installation.
 initial_scripts:
   - artix_configure_pacman.sh
   - install_paru.sh
 
 package_manager: paru
 packages:
+  - adobe-source-han-sans-otc-fonts
+  - alacritty
+  - brave-bin
+  - docker-runit
+  - element-desktop
   - emacs
   - exa
   - fish
+  - gdm-runit
   - git
+  - gnome-control-center
+  - gnome-keyring
+  - gnome-shell
+  - gnome-shell-extension-extension-list
+  - gnome-shell-extension-vitals
+  - gnome-tweaks
+  - go
+  - htop
+  - ispell
+  - man-db
+  - nautilus
   - neofetch
   - networkmanager-runit
   - openssh-runit
+  - podman
   - pyenv
+  - ripgrep
+  - shellcheck
   - sudo
   - tfenv
+  - ttf-fira-code
+  - yamllint
 
 # Here you can define any custom made executable scripts
 # that you would like to have run before moving on to
 # enabling services.
 midway_scripts:
-  - set_user_shell_fish.sh
+  - set_user_shell_fish.sh epost
+  - set_tfenv_user_group.sh epost
 
 init_system: runit
 services:
+  - docker
+  - gdm
   - NetworkManager
 
 # Here you can define any custom made executable scripts
 # that you would like to have run as a final bootstrap
 # step.
-# final_scripts:
+final_scripts:
+  - setup_rootless_podman.sh epost
