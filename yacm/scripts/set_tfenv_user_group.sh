@@ -17,5 +17,5 @@ if [[ ! -z "$TFENV_USER" ]]; then
     echo -e "User \e[32m$TFENV_USER\e[0m is in tfenv group already";
   fi
 else
-  echo -e "\e[31mUser not defined!\e[0m";
+  echo -e "\e[31mUser not specified!\e[0m";
 fi

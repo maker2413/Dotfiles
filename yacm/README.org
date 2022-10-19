@@ -1,0 +1,6 @@
+#+TITLE: YACM
+
+This directory contains my profiles and scripts for [[https://github.com/maker2413/yacm][yacm]]. Yacm is a tool that I
+developed to configure all of my systems. It can be thought of a really
+stripped down configuration management tool. For information I would recommend
+checking the yacm project repo.

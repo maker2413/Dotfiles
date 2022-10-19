@@ -15,5 +15,5 @@ if [[ ! -z "$FISH_USER" ]]; then
     echo -e "User \e[32m$FISH_USER\e[0m already using fish shell";
   fi
 else
-  echo -e "\e[31mUser not defined!\e[0m";
+  echo -e "\e[31mUser not specified!\e[0m";
 fi

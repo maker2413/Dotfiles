@@ -23,5 +23,5 @@ if [[ ! -z "$PODMAN_USER" ]]; then
     echo -e "File \e[32m/etc/subuid\e[0m already defined. Skipping...";
   fi
 else
-  echo -e "\e[31mUser not defined!\e[0m";
+  echo -e "\e[31mUser not specified!\e[0m";
 fi

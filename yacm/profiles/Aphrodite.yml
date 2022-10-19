@@ -13,6 +13,7 @@ packages:
   - adobe-source-han-sans-otc-fonts
   - alacritty
   - brave-bin
+  - dnsmasq-runit
   - docker-runit
   - element-desktop
   - emacs
@@ -20,6 +21,7 @@ packages:
   - fish
   - gdm-runit
   - git
+  - gnome-calculator
   - gnome-control-center
   - gnome-keyring
   - gnome-shell
@@ -28,7 +30,9 @@ packages:
   - gnome-tweaks
   - go
   - htop
+  - iptables-runit
   - ispell
+  - libvirt-runit
   - man-db
   - nautilus
   - neofetch
@@ -36,12 +40,15 @@ packages:
   - openssh-runit
   - podman
   - pyenv
+  - qemu-base
   - ripgrep
   - shellcheck
   - sudo
   - tfenv
   - tmux
+  - tree
   - ttf-fira-code
+  - virt-manager
   - yamllint
 
 # Here you can define any custom made executable scripts
@@ -50,12 +57,17 @@ packages:
 midway_scripts:
   - set_user_shell_fish.sh epost
   - set_tfenv_user_group.sh epost
+  - set_libvirt_user_group.sh epost
 
 init_system: runit
 services:
+  - dnsmasq
   - docker
   - gdm
+  - iptables
+  - libvirtd
   - NetworkManager
+  - virtlogd
 
 # Here you can define any custom made executable scripts
 # that you would like to have run as a final bootstrap
