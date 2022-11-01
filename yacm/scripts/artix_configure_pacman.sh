@@ -3,6 +3,7 @@
 set -e
 
 grep -qxF '[universe]' /etc/pacman.conf || sudo tee -a /etc/pacman.conf >/dev/null << 'EOF'
+
 [universe]
 Server = https://universe.artixlinux.org/$arch
 Server = https://mirror1.artixlinux.org/universe/$arch
@@ -15,6 +16,7 @@ EOF
 sudo pacman -Sy --needed artix-archlinux-support --noconfirm;
 
 grep -qxF '# Arch' /etc/pacman.conf || sudo tee -a /etc/pacman.conf >/dev/null <<'EOF'
+
 # Arch
 [extra]
 Include = /etc/pacman.d/mirrorlist-arch

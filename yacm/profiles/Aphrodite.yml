@@ -18,6 +18,7 @@ packages:
   - element-desktop
   - emacs
   - exa
+  - firefox
   - fish
   - gdm-runit
   - git
@@ -37,12 +38,14 @@ packages:
   - nautilus
   - neofetch
   - networkmanager-runit
+  - openntpd-runit
   - openssh-runit
   - podman
   - pyenv
   - qemu-base
   - ripgrep
   - shellcheck
+  - spotify
   - sudo
   - tfenv
   - tmux
@@ -67,6 +70,7 @@ services:
   - iptables
   - libvirtd
   - NetworkManager
+  - openntpd
   - virtlogd
 
 # Here you can define any custom made executable scripts
