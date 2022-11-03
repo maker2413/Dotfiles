@@ -65,6 +65,8 @@
 
 (define-key *root-map* (kbd "b") "pull-from-windowlist")
 
+(define-key *root-map* (kbd "s-b") "pull-from-windowlist")
+
 ;;; Groups
 
 (grename "1")
