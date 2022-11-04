@@ -306,7 +306,6 @@ alias ga "git add"
 alias gc "git commit"
 alias gch "git checkout"
 alias gcm "git checkout master"
-# alias gcm "git checkout main"
 alias gd "git diff"
 alias gl "git pull"
 alias gs "git status"
@@ -330,6 +329,13 @@ alias wkd "watch kubectl describe"
 alias wkg "watch kubectl get"
 alias wkr "watch kubectl delete"
 
+# Aliases for lxc
+alias lc "lxc"
+alias lcc "lxc launch"
+alias lcd "lxc delete"
+alias lci "lxc info"
+alias lcl "lxc list"
+
 # Aliases for terraform commands
 alias ta "terraform apply"
 alias td "terraform destroy"
@@ -351,9 +357,13 @@ if test $status -eq 1
 end
 
 # Pyenv Setup
-status is-interactive; and pyenv init --path | source
-pyenv init - | source
-# pyenv virtualenv-init - | source
+if type -q pyenv
+  status is-interactive; and pyenv init --path | source
+  pyenv init - | source
+  # pyenv virtualenv-init - | source
+end
 
 # Tfenv Setup
-set -p PATH $HOME/.tfenv/bin
+if type -q tfenv
+  set -p PATH $HOME/.tfenv/bin
+end
