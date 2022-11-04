@@ -7,6 +7,7 @@ hostname: Olympus
 initial_scripts:
   - artix_configure_pacman.sh
   - install_paru.sh
+  - install_iptables-nft.sh
 
 package_manager: paru
 packages:
@@ -14,6 +15,8 @@ packages:
   - exa
   - fish
   - git
+  - lxc
+  - lxd-runit
   - neofetch
   - openssh-runit
   - ripgrep
@@ -24,13 +27,15 @@ packages:
 # you would like to have run before moving on to enabling services.
 midway_scripts:
   - set_user_shell_fish.sh epost
+  - set_lxd_user_group.sh epost
 
 init_system: runit
 services:
+  - lxd
   - sshd
 
 # Here you can define any custom made executable scripts or commands that
 # you would like to have run as a final bootstrap
 # step.
-# final_scripts:
-#   -
+final_scripts:
+  - setup_unprivileged_lxc.sh
