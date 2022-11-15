@@ -13,6 +13,7 @@ packages:
   - adobe-source-han-sans-otc-fonts
   - alacritty
   - brave-bin
+  - deezer
   - dnsmasq-runit
   - docker-runit
   - element-desktop
@@ -33,6 +34,7 @@ packages:
   - htop
   - iptables-runit
   - ispell
+  - kubectl
   - libvirt-runit
   - man-db
   - nautilus
@@ -45,7 +47,6 @@ packages:
   - qemu-base
   - ripgrep
   - shellcheck
-  - spotify
   - sudo
   - tfenv
   - tmux
