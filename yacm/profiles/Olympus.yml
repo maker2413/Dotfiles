@@ -5,20 +5,20 @@ hostname: Olympus
 # Here you can define any custom made executable scripts or commands that
 # you would like to have run before moving on to package installation.
 initial_scripts:
-  - artix_configure_pacman.sh
   - install_paru.sh
-  - install_iptables-nft.sh
 
 package_manager: paru
 packages:
-  - emacs
+  - dhcpcd
+  - emacs-nox
   - exa
   - fish
   - git
-  - lxc
-  - lxd-runit
+  - k3s-1.25-bin
+  - kubectl
   - neofetch
-  - openssh-runit
+  - networkmanager
+  - openssh
   - ripgrep
   - sudo
   - tmux
@@ -27,15 +27,16 @@ packages:
 # you would like to have run before moving on to enabling services.
 midway_scripts:
   - set_user_shell_fish.sh epost
-  - set_lxd_user_group.sh epost
 
-init_system: runit
+init_system: systemd
 services:
-  - lxd
+  - dhcpcd
+  - k3s
+  - NetworkManager
   - sshd
 
 # Here you can define any custom made executable scripts or commands that
 # you would like to have run as a final bootstrap
 # step.
 final_scripts:
-  - setup_unprivileged_lxc.sh
+  - set_dhcpcd_static_ip.sh eno1 U2FsdGVkX18zilVm1kGroZjOUso5NZADcmdk7R3cxK4CHzkJLk8srjkF/ECvv2oz
