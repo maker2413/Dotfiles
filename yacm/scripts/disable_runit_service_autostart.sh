@@ -18,7 +18,7 @@ fi
 
 if [[ ! -f /run/runit/service/$SERVICE/down ]]; then
   echo -e "Disabling \e[32m$SERVICE\e[0m from autostarting...";
-  $SUDO touch /run/runit/service/$SERVICE/down;
+  "$SUDO" touch /run/runit/service/$SERVICE/down;
 else
   echo -e "Service: \e[32m$SERVICE\e[0m already disabled!";
 fi

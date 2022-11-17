@@ -61,8 +61,8 @@ packages:
 # enabling services.
 midway_scripts:
   - set_user_shell_fish.sh epost
-  - set_tfenv_user_group.sh epost
-  - set_libvirt_user_group.sh epost
+  - add_user_group.sh epost tfenv
+  - add_user_group.sh epost libvirt
 
 init_system: runit
 services:
