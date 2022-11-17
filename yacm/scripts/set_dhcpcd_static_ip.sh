@@ -13,11 +13,13 @@ fi
 # Print error if Network Device not provided
 if [[ -z "$NETWORK_DEVICE" ]]; then
   echo -e "\e[31mNetwork device not specified!\e[0m";
+  exit 1;
 fi
 
 # Print error if Static IP not provided
 if [[ -z "$STATIC_IP" ]]; then
   echo -e "\e[31mStatic IP not specified!\e[0m";
+  exit 1;
 fi
 
 echo -e "Setting static ip of \e[32m$NETWORK_DEVICE\e[0m to: \e[32m$STATIC_IP\e[0m";

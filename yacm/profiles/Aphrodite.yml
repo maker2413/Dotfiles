@@ -12,6 +12,7 @@ package_manager: paru
 packages:
   - adobe-source-han-sans-otc-fonts
   - alacritty
+  - bluez-runit
   - brave-bin
   - deezer
   - dnsmasq-runit
@@ -65,6 +66,7 @@ midway_scripts:
 
 init_system: runit
 services:
+  - bluetoothd
   - dnsmasq
   - docker
   - gdm
@@ -79,3 +81,4 @@ services:
 # step.
 final_scripts:
   - setup_rootless_podman.sh epost
+  - disable_runit_service_autostart.sh bluetoothd
