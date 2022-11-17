@@ -13,6 +13,7 @@ packages:
   - adobe-source-han-sans-otc-fonts
   - alacritty
   - bluez-runit
+  - bluez-utils
   - brave-bin
   - deezer
   - dnsmasq-runit
@@ -38,6 +39,7 @@ packages:
   - kubectl
   - libvirt-runit
   - man-db
+  - multimc-bin
   - nautilus
   - neofetch
   - networkmanager-runit
