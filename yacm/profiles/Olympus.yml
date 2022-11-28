@@ -14,6 +14,7 @@ packages:
   - exa
   - fish
   - git
+  - htop
   - k3s-1.25-bin
   - kubectl
   - neofetch
