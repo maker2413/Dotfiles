@@ -1,3 +1,6 @@
 [submodule "emacs"]
 	path = emacs
 	url = https://github.com/maker2413/Emacs.git
+[submodule "stumpwm/modules"]
+	path = stumpwm/modules
+	url = https://github.com/stumpwm/stumpwm-contrib.git
