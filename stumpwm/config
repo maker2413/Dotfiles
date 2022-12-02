@@ -1,17 +1,12 @@
 ;; -*- lisp -*-
 
 ;;;; STUMPWM CONFIG
-
 (in-package :stumpwm)
 
 ;;; Basic Settings
-
 (set-prefix-key (kbd "s-x"))
 
 (setf *mouse-focus-policy* :sloppy)
-
-;;; Monitor configuration
-;;(run-shell-command "mons -e top")
 
 ;;; Font Configuration
 ;;; https://config.phundrak.com/stumpwm.html
@@ -23,9 +18,7 @@
 ;;                                :subfamily "Regular"
 ;;                                :size 11)))
 
-
 ;;; Keybindings
-
 (define-key STUMPWM::*tile-group-root-map* (kbd "0") "remove")
 (define-key STUMPWM::*tile-group-root-map* (kbd "1") "only")
 (define-key STUMPWM::*tile-group-root-map* (kbd "2") "vsplit")
@@ -68,7 +61,6 @@
 (define-key *root-map* (kbd "s-b") "pull-from-windowlist")
 
 ;;; Groups
-
 (grename "1")
 (gnewbg "2")
 (gnewbg "3")
@@ -76,7 +68,6 @@
 (gnewbg "5")
 
 ;;; Modeline
-
 (setf *time-modeline-string* "^B%a %b%d %I:%M%P^b")
 
 (setf *group-format* "^B[%t]^b")
