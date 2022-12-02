@@ -320,6 +320,7 @@ alias gr "git restore"
 alias ka "kubectl apply"
 alias kc "kubectl create"
 alias kd "kubectl describe"
+alias ke "kubectl exec"
 alias kg "kubectl get"
 alias kga "kubectl get all"
 alias kr "kubectl delete"
@@ -368,4 +369,9 @@ end
 # Tfenv Setup
 if type -q tfenv
   set -p PATH $HOME/.tfenv/bin
+end
+
+# Krew Setup
+if test -d $HOME/.krew/bin
+  set -gx PATH $PATH $HOME/.krew/bin
 end
