@@ -21,8 +21,10 @@ gedit
 GIMP
 gnome-control-center
 gnome-initial-setup-done
+GNOME-xdg-terminals.list
 gtk-2.0
 gtk-3.0
+helm
 ibus
 libfm
 LBRY
@@ -47,4 +49,5 @@ user-dirs.locale
 virt-viewer
 VirtualBox
 vlc
+xdg-terminals.list
 yacm/default_profile
