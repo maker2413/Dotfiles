@@ -8,15 +8,19 @@
 
 (setf *mouse-focus-policy* :sloppy)
 
+;;; Load stumpwm-contrib
+;; cd ~/.config && git submodule init && git submodule update --checkout
+(init-load-path #p"~/.config/stumpwm/modules/")
+
 ;;; Font Configuration
 ;;; https://config.phundrak.com/stumpwm.html
-;; (ql:quickload :clx-truetype)
-;; (load-module "ttf-fonts")
+(ql:quickload :clx-truetype)
+(load-module "ttf-fonts")
 
-;; (set-font (list (make-instance 'xft:font
-;;                                :family "Fira Code Retina"
-;;                                :subfamily "Regular"
-;;                                :size 11)))
+(set-font (list (make-instance 'xft:font
+                                :family "Fira Code Retina"
+                                :subfamily "Regular"
+                                :size 10)))
 
 ;;; Keybindings
 (define-key STUMPWM::*tile-group-root-map* (kbd "0") "remove")
@@ -68,7 +72,9 @@
 (gnewbg "5")
 
 ;;; Modeline
-(setf *time-modeline-string* "^B%a %b%d %I:%M%P^b")
+(setf *mode-line-position* :bottom)
+
+(setf *time-modeline-string* "^B%a|%b %d|%I:%M%P^b")
 
 (setf *group-format* "^B[%t]^b")
 (setf *window-format* "%m%50t")
@@ -79,8 +85,8 @@
             "^>"   ; right align
             "%d")) ; time/date
 
-(stumpwm:toggle-mode-line (stumpwm:current-screen)
-                          (stumpwm:current-head))
+(toggle-mode-line (current-screen)
+                  (current-head))
 
 ;;; Autostart programs
 (run-shell-command "picom")
@@ -88,3 +94,37 @@
 
 (define-fullscreen-in-frame-rule my-default-rule (win)
   t)
+
+;;; SLY setup
+;; Sly setup tank from Gavin Freeborn:
+;; https://github.com/Gavinok/stump-conf/blob/main/config
+(ql:quickload :slynk)
+(defvar *slynk-port* slynk::default-server-port)
+(defparameter *stumpwm-slynk-session* nil)
+
+(defcommand start-slynk (&optional (port *slynk-port*)) ()
+  (handler-case
+      (defparameter *stumpwm-slynk-session*
+        (slynk:create-server
+         :dont-close t
+         :port port))
+    (error (c)
+      (format *error-output* "Error starting slynk: ~a~%" c)
+      )))
+
+(defcommand restart-slynk () ()
+  "Restart Slynk and reload source.
+This is needed if Sly updates while StumpWM is running"
+  (stop-slynk)
+  (start-slynk))
+
+(defcommand stop-slynk () ()
+  "Restart Slynk and reload source.
+This is needed if Sly updates while StumpWM is running"
+  (slynk:stop-server *slynk-port*))
+
+(defcommand connect-to-sly () ()
+  (unless *stumpwm-slynk-session*
+    (start-slynk))
+  (exec-el (sly-connect "localhost" *slynk-port*))
+  (emacs))

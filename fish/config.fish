@@ -282,10 +282,13 @@ end
 set -x EDITOR "emacs -nw"
 set fish_greeting
 
+# EXA Config
+set -x EXA_COLORS "uu=35:gu=35"
+
 # Basic aliases
 alias brave-browser "brave"
 alias em "emacs -nw"
-alias cls "clear && exa -l --icons"
+alias cls "clear && echo \"Current directory:\" && exa -lag --icons"
 alias dev "docker run -it -v /home/epost/.ssh:/home/epost/.ssh -v (pwd):/home/epost/Code hephaestdev:latest"
 alias journal "emacs -nw ~/Journal/"
 alias linecount "find . -type f -print0 | wc -l --files0-from=-"
@@ -324,6 +327,7 @@ alias ke "kubectl exec"
 alias kg "kubectl get"
 alias kga "kubectl get all"
 alias kr "kubectl delete"
+alias kl "kubectl logs"
 
 # Aliases for watching kubectl commands
 alias wka "watch kubectl apply"
