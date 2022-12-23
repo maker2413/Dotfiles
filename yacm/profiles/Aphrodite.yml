@@ -15,6 +15,7 @@ packages:
   - bluez-runit
   - bluez-utils
   - brave-bin
+  - chrony-runit
   - deezer
   - dnsmasq-runit
   - docker-runit
@@ -43,7 +44,7 @@ packages:
   - nautilus
   - neofetch
   - networkmanager-runit
-  - openntpd-runit
+  - openresolv
   - openssh-runit
   - podman
   - pyenv
@@ -56,6 +57,7 @@ packages:
   - tree
   - ttf-fira-code
   - virt-manager
+  - wireguard-tools
   - yamllint
 
 # Here you can define any custom made executable scripts
@@ -63,19 +65,20 @@ packages:
 # enabling services.
 midway_scripts:
   - set_user_shell_fish.sh epost
-  - add_user_group.sh epost tfenv
+  - add_user_group.sh epost docker
   - add_user_group.sh epost libvirt
+  - add_user_group.sh epost tfenv
 
 init_system: runit
 services:
   - bluetoothd
+  - chrony
   - dnsmasq
   - docker
   - gdm
   - iptables
   - libvirtd
   - NetworkManager
-  - openntpd
   - virtlogd
 
 # Here you can define any custom made executable scripts
