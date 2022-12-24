@@ -1,0 +1,150 @@
+#+TITLE: Artix Installation Guide (runit)
+#+created: [2022-12-23 Fri 13:30]
+#+last_modified: [2022-12-23 Fri 19:25]
+
+I run the runit variant of artix linux on my laptop and I also run it with a
+btrfs filesystem. For the most part my installation of artix doesn't differ much
+from a standard arch linux manual installation so most of this could be grabbed
+from the wiki. I'll still put everything here just so I personally don't have to
+read online when reinstalling my system.
+
+* Partitioning and Formatting
+  To begin with here is how my drive is partitioned and formatted:
+  #+begin_src shell
+    # List the current drives and partitions
+    lsblk
+
+    # Partition desired drive
+    #   I normally make about a 500Mb EFI partition, a 8Gb swap
+    #   partition, and the rest of the drive as the root partition
+    fdisk /dev/sdX
+
+    # Format the created partitions
+    mkfs.fat -F32 /dev/sdX
+    mkswap /dev/sdX2
+    swapon /dev/sdX2
+    mkfs.btrfs /dev/sdX3
+
+    # Create the btrfs subvolumes
+    mount /dev/sdX3 /mnt
+    btrfs subvolume create /mnt/@
+    btrfs subvolume create /mnt/@home
+    btrfs subvolume create /mnt/@snapshots
+    btrfs subvolume create /mnt/@var_log
+    umount /mnt
+
+    # Mount the btrfs subvolumes
+    mount -o noatime,compress=lzo,space_cache=v2,subvol=@ /dev/sdX3 /mnt
+    mkdir -p /mnt/{boot,home,.snapshots,var_log}
+    mount -o noatime,compress=lzo,space_cache=v2,subvol=@home /dev/sdX3 /mnt/home
+    mount -o noatime,compress=lzo,space_cache=v2,subvol=@snapshots /dev/sdX3 /mnt/.snapshots
+    mount -o noatime,compress=lzo,space_cache=v2,subvol=@var_log /dev/sdX3 /mnt/var_log
+    mount /dev/sdX1 /mnt/boot
+
+    # Make sure everything is mounted properly
+    lsblk
+  #+end_src
+
+* Installation
+  With all of that out of the way from here my artix installation basically
+  matches a standard manual installation of arch other than the fact that artix
+  using ~basestrap~ instead of ~pacstrap~ to install packages into the mounted
+  partition. In my case I am running the runit variant of artix so I need to
+  install the ~runit~ package to have an init system and I also install
+  ~elogind-runit~ to have a runit support login system. Lets stop talking about
+  it and lets just do it:
+  #+begin_src shell
+    basestrap /mnt base base-devel runit linux linux-firmware emacs git sudo elogind-runit
+  #+end_src
+
+* Configuration
+  Artix uses slightly different tools than arch linux that behave the same as
+  the arch linux variants, as seen above with ~basestrap~. Artix uses ~fstabgen~
+  instead of ~genfstab~ as of writing this. Artix also uses ~artix-chroot~
+  instead of ~arch-chroot~. With that said lets dive into the configuration of
+  our new installation:
+  #+begin_src shell
+    fstabgen -U /mnt >> /mnt/etc/fstab
+
+    # chroot into our drive finally
+    artix-chroot /mnt
+
+    # Edit pacman mirror list to prioritize US by moving
+    #   US servers to top of list
+    emacs /etc/pacman.d/mirrorlist
+
+    # Set timezone
+    ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
+    hwclock --systohc
+
+    # Set locale by uncommenting locale you will be using
+    emacs /etc/locale.gen
+    locale-gen
+    # Add locale specified to locale.conf ie: LANG=en_US.UTF-8
+    emacs /etc/locale.conf
+
+    # Install runit variant of networkmanager
+    pacman -S networkmanger-runit
+    # This has to be done this since we haven't booted off this machine
+    ln -s /etc/runit/sv/NetworkManger /etc/runit/runsvdir/current
+
+    # Setup hostname
+    emacs /etc/hostname
+    emacs /etc/hosts
+
+    # Configure mkinitcpio by adding the following:
+    #   MODULE=(btrfs)
+    emacs /etc/mkinitcpio.conf
+    # To support btrfs we have to install btrfs-progs
+    pacman -S btrfs-progs
+    mkinitcpio -p linux
+  #+end_src
+
+* Boot manager
+  Now we have a fully installed system, but we have no way to boot into it. I
+  like most people just use grub as my boot manager because it just works:
+  #+begin_src shell
+    pacman -S grub efibootmgr
+    grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+    grub-mkconfig -o /boot/grub/grub.cfg
+  #+end_src
+
+* Final Touches
+  Technically we are done now however I would highly recommend making sure you
+  have a user created to login into and ~sudo~ setup so your user can get root
+  access when it needs it:
+  #+begin_src shell
+    # Set root passwd
+    passwd
+
+    # Setup sudo
+    pacman -S sudo
+    EDITOR="emacs -nw" visudo
+
+    # Create user
+    useradd -mG wheel <user>
+    passwd <user>
+  #+end_src
+
+  From here you can test out your user's sudo capabilities before rebooting with
+  something like this:
+  #+begin_src shell
+    su <user>
+    sudo -i
+  #+end_src
+
+  Assuming everything works just exit your chroot, unmount your drive(s), and
+  reboot to see if everything works:
+  #+begin_src shell
+    exit
+    umount -R /mnt
+    reboot
+  #+end_src
+
+* Bootstrapping
+  I boot strap all of my systems after they have been installed using a tool
+  that I created called [[https://github.com/maker2413/yacm][yacm]] or Yet Another Configuration Manager. I'm not going
+  to go into the details of yacm here, but for my artix system I use [[../yacm/profiles/Aphrodite.yml][this]]
+  profile. Even if you aren't going to use yacm or my profile for your system it
+  may be helpful to take a look at this as I use yacm to do some helpful things
+  for an artix installation like enabling the arch linux package repositories.
