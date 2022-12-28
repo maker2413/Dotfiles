@@ -22,6 +22,7 @@ packages:
   - element-desktop
   - emacs
   - exa
+  - expect
   - firefox
   - fish
   - gdm-runit
@@ -37,6 +38,8 @@ packages:
   - htop
   - iptables-runit
   - ispell
+  - jre-openjdk
+  - jre8-openjdk
   - kubectl
   - libvirt-runit
   - man-db
