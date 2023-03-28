@@ -9,6 +9,8 @@ if [ ! "$(which paru 2> /dev/null)" ]; then
   makepkg -si --noconfirm;
   cd ..;
   rm -rf paru-bin;
+else
+  echo -e "\e[32paru already installed! Skipping...\e[0m";
 fi
 
 paru -S paru-bin --needed --noconfirm --skipreview;
