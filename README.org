@@ -1,9 +1,17 @@
 #+TITLE: Linux Configs
 #+PROPERTY: header-args
+#+created: [2022-03-29 Tue 12:30]
+#+last_modified: [2022-12-23 Fri 19:27]
 
-* What is this?
-  These are just my personal configs for my arch linux setup. Feel free to use or modify
-  them in anyway. Please note I have included a =Xmodmap= config file to swap left ctrl
-  and left alt as that is how I like it. I know this is inconventional so I don't have
-  it setup by default. If you would like to use this keyboard config just rename the =Xmodmap=
-  file to =.Xmodmap=.
+These are personal configurations for the tools I use on a daily basis. Feel
+free to use or modify them in anyway. On most of my machines I run arch linux
+and normally I just use the new ~arch-install~ utility. On my laptop however I
+run artix linux, which if you have never heard of it it is arch linux with
+~systemd~ stripped out. You can check my installation guide for artix here:
+[[./docs/artix_install.org][docs]].
+
+* Bootstrapping
+  I boot strap all of my systems after they have been installed using a tool
+  that I created called [[https://github.com/maker2413/yacm][yacm]] or Yet Another Configuration Manager. I'm not going
+  to go into the details of yacm here, but you can see all of my system's
+  profiles: [[./yacm/profiles/][here]].

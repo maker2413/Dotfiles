@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 FISH_USER="$1";
 
