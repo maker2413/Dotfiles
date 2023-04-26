@@ -52,7 +52,7 @@
 
 (undefine-key *root-map* (kbd "!"))
 
-(define-key *root-map* (kbd "s-f") "exec")
+(define-key *root-map* (kbd "s-f") "exec rofi -show run")
 
 (undefine-key *root-map* (kbd "m"))
 
