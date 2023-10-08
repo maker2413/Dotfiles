@@ -10,6 +10,7 @@ deezer-desktop
 deluge
 discord
 dleyna-renderer-service.conf
+dleyna-server-service.conf
 Electron
 Element
 enchant
@@ -39,6 +40,7 @@ nitrogen
 Notepadqq
 packer
 pcmanfm
+pop-shell
 pulse
 QtProject.conf
 spotify
