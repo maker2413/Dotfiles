@@ -1,0 +1,58 @@
+---
+name: Hephaestus
+hostname: Hephaestus
+
+# Here you can define any custom made executable scripts or commands that
+# you would like to have run before moving on to package installation.
+initial_scripts:
+  - enable_pacman_multilib.sh
+  - install_paru.sh
+
+package_manager: paru
+packages:
+  - alacritty
+  - brave-bin
+  - docker
+  - efibootmgr
+  - element-desktop
+  - emacs
+  - exa
+  - fish
+  - gdm
+  - git
+  - gnome
+  - gnome-tweaks
+  - grub
+  - htop
+  - ispell
+  - iwd
+  - kubectl
+  - man-db
+  - neofetch
+  - networkmanager
+  - openssh
+  - pyenv
+  - ripgrep
+  - sudo
+  - tfenv
+  - tmux
+  - ttf-fira-code
+  - xivlauncher
+
+# Here you can define any custom made executable scripts or commands that
+# you would like to have run before moving on to enabling services.
+midway_scripts:
+  - set_user_shell_fish.sh epost
+  - add_user_group.sh epost docker
+  - add_user_group.sh epost tfenv
+
+init_system: systemd
+services:
+  - gdm
+  - NetworkManager
+
+# Here you can define any custom made executable scripts or commands that
+# you would like to have run as a final bootstrap
+# step.
+# final_scripts:
+#   -
