@@ -17,6 +17,7 @@ packages:
   - element-desktop
   - emacs
   - exa
+  - extension-manager
   - fish
   - gdm
   - git
@@ -27,17 +28,24 @@ packages:
   - ispell
   - iwd
   - kubectl
+  - lib32-nvidia-utils
+  - lollypop
   - man-db
   - neofetch
   - networkmanager
+  - nvidia-utils
   - openssh
   - pyenv
   - ripgrep
+  - rsync
+  - steam
   - sudo
   - tfenv
   - tmux
   - ttf-fira-code
+  - vlc
   - xivlauncher
+  - youtube-dl
 
 # Here you can define any custom made executable scripts or commands that
 # you would like to have run before moving on to enabling services.
