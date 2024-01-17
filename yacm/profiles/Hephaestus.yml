@@ -12,6 +12,7 @@ package_manager: paru
 packages:
   - alacritty
   - brave-bin
+  - dnsmasq
   - docker
   - efibootmgr
   - element-desktop
@@ -28,14 +29,18 @@ packages:
   - ispell
   - iwd
   - kubectl
+  - kubeseal
   - lib32-nvidia-utils
+  - libguestfs
   - lollypop
   - man-db
   - neofetch
   - networkmanager
   - nvidia-utils
+  - openbsd-netcat
   - openssh
   - pyenv
+  - qemu-full
   - ripgrep
   - rsync
   - steam
@@ -43,6 +48,8 @@ packages:
   - tfenv
   - tmux
   - ttf-fira-code
+  - virt-manager
+  - virt-viewer
   - vlc
   - xivlauncher
   - youtube-dl
@@ -51,12 +58,15 @@ packages:
 # you would like to have run before moving on to enabling services.
 midway_scripts:
   - set_user_shell_fish.sh epost
+  - edit_libvirtd_conf.sh
   - add_user_group.sh epost docker
+  - add_user_group.sh epost libvirt
   - add_user_group.sh epost tfenv
 
 init_system: systemd
 services:
   - gdm
+  - libvirtd
   - NetworkManager
 
 # Here you can define any custom made executable scripts or commands that
