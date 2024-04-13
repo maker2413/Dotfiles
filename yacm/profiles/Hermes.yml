@@ -1,0 +1,59 @@
+---
+name: Hermes
+hostname: Hermes
+
+# Here you can define any custom made executable scripts or commands that
+# you would like to have run before moving on to package installation.
+initial_scripts:
+  - enable_pacman_multilib.sh
+  - install_paru.sh
+
+package_manager: paru
+packages:
+  - alacritty
+  - brave-bin
+  - dhcpcd
+  - docker
+  - element-desktop
+  - emacs
+  - exa
+  - fish
+  - gdm
+  - git
+  - gnome-control-center
+  - gnome-shell
+  - gnome-tweaks
+  - htop
+  - ispell
+  - iwd
+  - lib32-nvidia-utils
+  - man-db
+  - neofetch
+  - nvidia
+  - openssh
+  - pyenv
+  - ripgrep
+  - sassc
+  - sudo
+  - tfenv
+  - tmux
+  - ttf-fira-code
+  - xorg-xrandr
+
+# Here you can define any custom made executable scripts or commands that
+# you would like to have run before moving on to enabling services.
+midway_scripts:
+  - set_user_shell_fish.sh epost
+  - add_user_group.sh epost docker
+
+init_system: systemd
+services:
+  - dhcpcd
+  - gdm
+  - iwd
+
+# Here you can define any custom made executable scripts or commands that
+# you would like to have run as a final bootstrap
+# step.
+# final_scripts:
+#   -
