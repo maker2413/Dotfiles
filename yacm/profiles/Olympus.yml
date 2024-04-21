@@ -12,6 +12,7 @@ packages:
   - emacs-nox
   - exa
   - fish
+  - gcc
   - git
   - htop
   - neofetch
@@ -23,8 +24,6 @@ packages:
 # you would like to have run before moving on to enabling services.
 midway_scripts:
   - set_user_shell_fish.sh epost
-  - install_kubectl.sh
-  - install_k3s.sh
 
 init_system: systemd
 services:
@@ -34,3 +33,5 @@ services:
 # you would like to have run as a final bootstrap
 # step.
 # final_scripts:
+  # - install_kubectl.sh
+  # - install_k3s.sh
