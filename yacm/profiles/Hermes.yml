@@ -4,53 +4,36 @@ hostname: Hermes
 
 # Here you can define any custom made executable scripts or commands that
 # you would like to have run before moving on to package installation.
-initial_scripts:
-  - enable_pacman_multilib.sh
-  - install_paru.sh
+#initial_scripts:
+#  -
 
-package_manager: paru
+package_manager: dnf
 packages:
-  - alacritty
-  - brave-bin
-  - dhcpcd
-  - docker
-  - element-desktop
+  - autoconf
+  - automake
+  - cmake
   - emacs
   - exa
+  - fira-code-fonts
   - fish
-  - gdm
-  - git
-  - gnome-control-center
-  - gnome-shell
-  - gnome-tweaks
-  - htop
-  - ispell
-  - iwd
-  - lib32-nvidia-utils
-  - man-db
+  - libtool
   - neofetch
-  - nvidia
-  - openssh
-  - pyenv
-  - ripgrep
-  - sassc
-  - sudo
-  - tfenv
-  - tmux
-  - ttf-fira-code
-  - xorg-xrandr
+  - zeromq-devel
+
+# Here you can define any flatpak packages you want to install
+flatpak:
+  - com.brave.Browser
+  - com.mattjakeman.ExtensionManager
+  - im.riot.Riot
 
 # Here you can define any custom made executable scripts or commands that
 # you would like to have run before moving on to enabling services.
 midway_scripts:
   - set_user_shell_fish.sh epost
-  - add_user_group.sh epost docker
 
 init_system: systemd
-services:
-  - dhcpcd
-  - gdm
-  - iwd
+#services:
+#  -
 
 # Here you can define any custom made executable scripts or commands that
 # you would like to have run as a final bootstrap
