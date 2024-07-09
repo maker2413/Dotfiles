@@ -18,6 +18,7 @@ packages:
   - fish
   - libtool
   - neofetch
+  - npm
   - zeromq-devel
 
 # Here you can define any flatpak packages you want to install
