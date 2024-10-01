@@ -381,5 +381,10 @@ if test -d $HOME/.krew/bin
   set -gx PATH $PATH $HOME/.krew/bin
 end
 
+# Go Setup
+if test -d $HOME/go/bin
+  set -gx PATH $PATH $HOME/go/bin
+end
+
 # Remove warning message from jupyter
 set -gx PYDEVD_DISABLE_FILE_VALIDATION 1
