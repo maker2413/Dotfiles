@@ -4,28 +4,22 @@ hostname: Hermes
 
 # Here you can define any custom made executable scripts or commands that
 # you would like to have run before moving on to package installation.
-#initial_scripts:
-#  -
+initial_scripts:
+  - install_emacs_ppa.sh
 
-package_manager: dnf
+package_manager: apt
 packages:
-  - autoconf
-  - automake
-  - cmake
-  - emacs
   - exa
-  - fira-code-fonts
   - fish
-  - libtool
+  - fonts-firacode
+  - git
+  - gnome-tweaks
   - neofetch
-  - npm
-  - zeromq-devel
 
 # Here you can define any flatpak packages you want to install
 flatpak:
   - com.brave.Browser
-  - com.mattjakeman.ExtensionManager
-  - im.riot.Riot
+  - io.github.pantheon_tweaks.pantheon-tweaks
 
 # Here you can define any custom made executable scripts or commands that
 # you would like to have run before moving on to enabling services.
