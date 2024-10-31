@@ -13,6 +13,7 @@ dleyna-renderer-service.conf
 dleyna-server-service.conf
 Electron
 Element
+ecwolf
 enchant
 evolution
 filezilla
@@ -52,6 +53,7 @@ QtProject.conf
 spotify
 StardewValley
 systemd
+tiling-assistant
 totem
 unity3d
 user-dirs.dirs

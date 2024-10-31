@@ -45,8 +45,10 @@ packages:
   - steam
   - sudo
   - tfenv
+  - tk
   - tmux
   - ttf-fira-code
+  - vlc
   - xivlauncher
 
 # Here you can define any custom made executable scripts or commands that
