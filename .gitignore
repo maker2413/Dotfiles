@@ -17,6 +17,7 @@ ecwolf
 enchant
 evolution
 filezilla
+fish/conf.d
 fish/fish_variables
 flameshot
 Flat
@@ -35,11 +36,13 @@ libfm
 LBRY
 libreoffice
 lutris
+marlin
 menus
 mimeapps.list
 monero-project
 monitors.xml
 monitors.xml~
+mozc
 Mullvad\ VPN
 nextjs-nodejs
 nitrogen
@@ -47,6 +50,7 @@ Notepadqq
 notion-app
 packer
 pcmanfm
+plank
 pop-shell
 pulse
 QtProject.conf
@@ -55,9 +59,11 @@ StardewValley
 systemd
 tiling-assistant
 totem
+touchegg
 unity3d
 user-dirs.dirs
 user-dirs.locale
+uv
 Vampire_Survivors*
 virt-viewer
 VirtualBox
