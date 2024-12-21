@@ -11,8 +11,10 @@ initial_scripts:
 package_manager: paru
 packages:
   - alacritty
+  - aws-cli-v2
   - brave-bin
   - docker
+  - docker-compose
   - element-desktop
   - emacs
   - exa
@@ -20,6 +22,7 @@ packages:
   - fish
   - gdm
   - git
+  - gnu-netcat
   - go
   - golangci-lint-bin
   - gnome
@@ -39,7 +42,7 @@ packages:
   - npm
   - openssh
   - prismlauncher
-  - pyenv
+  - python-uv
   - ripgrep
   - rsync
   - steam

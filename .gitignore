@@ -3,6 +3,7 @@ autostart
 balena-etcher-electron
 BraveSoftware
 cef_user_data
+chromium
 Clementine
 cni
 dconf
@@ -38,6 +39,7 @@ libreoffice
 lutris
 marlin
 menus
+Microsoft
 mimeapps.list
 monero-project
 monitors.xml
