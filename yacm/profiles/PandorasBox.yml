@@ -13,6 +13,7 @@ packages:
   - alacritty
   - aws-cli-v2
   - brave-bin
+  - dnsmasq
   - docker
   - docker-compose
   - element-desktop
@@ -34,7 +35,9 @@ packages:
   - jdk8-openjdk
   - jdk21-openjdk
   - kubectl
+  - libvirt
   - man-db
+  - minikube
   - monero-gui
   - neofetch
   - networkmanager
@@ -42,7 +45,9 @@ packages:
   - npm
   - openssh
   - prismlauncher
+  - protobuf
   - python-uv
+  - qemu-full
   - ripgrep
   - rsync
   - steam
@@ -51,6 +56,7 @@ packages:
   - tk
   - tmux
   - ttf-fira-code
+  - virt-manager
   - vlc
   - xivlauncher
 
@@ -59,11 +65,13 @@ packages:
 midway_scripts:
   - set_user_shell_fish.sh epost
   - add_user_group.sh epost docker
+  - add_user_group.sh epost libvirt
   - add_user_group.sh epost tfenv
 
 init_system: systemd
 services:
   - gdm
+  - libvirtd
   - NetworkManager
 
 # Here you can define any custom made executable scripts or commands that

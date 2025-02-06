@@ -353,16 +353,20 @@ alias tfp "terraform plan"
 alias tfw "terraform workspace"
 
 if [ -t 0 ]
-  neofetch
+  if type -q neofetch
+    neofetch
+  end
 end
 
 # SSH Agent
-pgrep ssh-agent > /dev/null
-if test $status -eq 1
-  eval (ssh-agent -c) > /dev/null
-  set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
-  set -Ux SSH_AGENT_PID $SSH_AGENT_PID
-  set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+if type -q ssh
+  pgrep ssh-agent > /dev/null
+  if test $status -eq 1
+    eval (ssh-agent -c) > /dev/null
+    set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+    set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+    set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+  end
 end
 
 # Pyenv Setup
