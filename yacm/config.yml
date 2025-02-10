@@ -1,8 +1,4 @@
----
-# Configuration for yacm
-
-# Uncomment any of the following to override the defaults for these variables
-# yacm_base_dir: /home/epost/.config
-# yacm_dir: /home/epost/.config/yacm
-# yacm_profiles_dir: /home/epost/.config/yacm/profiles
-# yacm_scripts_dir: /home/epost/.config/yacm/scripts
+yacm_base_dir: /home/epost/.config
+yacm_dir: /home/epost/.config/yacm
+yacm_profiles_dir: /home/epost/.config/yacm/profiles
+yacm_scripts_dir: /home/epost/.config/yacm/scripts
