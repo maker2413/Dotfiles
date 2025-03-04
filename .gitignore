@@ -1,6 +1,7 @@
 .gsd-keyboard.settings-ported
 autostart
 balena-etcher-electron
+beekeeper-studio
 BraveSoftware
 cef_user_data
 chromium
@@ -60,6 +61,7 @@ QtProject.conf
 spotify
 StardewValley
 systemd
+Tailscale
 tiling-assistant
 totem
 touchegg

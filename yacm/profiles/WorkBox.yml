@@ -1,0 +1,65 @@
+---
+name: WorkBox
+hostname: WorkBox
+
+# Here you can define any custom made executable scripts or commands that
+# you would like to have run before moving on to package installation.
+initial_scripts:
+  - install_paru.sh
+
+package_manager: paru
+packages:
+  - alacritty
+  - aws-cli-v2
+  - beekeeper-studio-bin
+  - brave-bin
+  - docker
+  - docker-compose
+  - emacs
+  - exa
+  - fish
+  - gdm
+  - git
+  - go
+  - golangci-lint-bin
+  - gnome
+  - gnome-tweaks
+  - grub
+  - htop
+  - ispell
+  - kubectl
+  - man-db
+  - minikube
+  - neofetch
+  - notion-app
+  - npm
+  - openssh
+  - python-uv
+  - ripgrep
+  - spice-vdagent
+  - sudo
+  - tfenv
+  - tmux
+  - ttf-fira-code
+
+# Here you can define any flatpak packages you want to install
+# flatpak:
+#   -
+
+# Here you can define any custom made executable scripts or commands that
+# you would like to have run before moving on to enabling services.
+midway_scripts:
+  - set_user_shell_fish.sh epost
+  - add_user_group.sh epost docker
+  - add_user_group.sh epost tfenv
+
+init_system: systemd
+services:
+  - gdm
+  - spice-vdagentd
+
+# Here you can define any custom made executable scripts or commands that
+# you would like to have run as a final bootstrap
+# step.
+# final_scripts:
+#   -
