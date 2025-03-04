@@ -24,6 +24,7 @@ packages:
   - golangci-lint-bin
   - gnome
   - gnome-tweaks
+  - google-cloud-cli
   - grub
   - htop
   - ispell
