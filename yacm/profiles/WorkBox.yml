@@ -35,6 +35,7 @@ packages:
   - notion-app
   - npm
   - openssh
+  - postman-bin
   - python-uv
   - ripgrep
   - spice-vdagent
