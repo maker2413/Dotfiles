@@ -44,6 +44,7 @@ packages:
   - notion-app
   - npm
   - openssh
+  - postman-bin
   - prismlauncher
   - protobuf
   - python-uv
