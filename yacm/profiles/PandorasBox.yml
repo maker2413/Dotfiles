@@ -15,6 +15,7 @@ packages:
   - brave-bin
   - dnsmasq
   - docker
+  - docker-buildx
   - docker-compose
   - element-desktop
   - emacs
