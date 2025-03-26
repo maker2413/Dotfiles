@@ -43,7 +43,7 @@ packages:
   - neofetch
   - networkmanager
   - notion-app
-  - npm
+  - nvm
   - openssh
   - postman-bin
   - prismlauncher
