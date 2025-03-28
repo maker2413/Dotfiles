@@ -28,6 +28,7 @@ packages:
   - gnome-tweaks
   - google-cloud-cli
   - grub
+  - helm
   - htop
   - ispell
   - kops
