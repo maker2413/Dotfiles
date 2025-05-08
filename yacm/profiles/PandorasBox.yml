@@ -11,7 +11,7 @@ initial_scripts:
 package_manager: paru
 packages:
   - alacritty
-  - aws-cli-v2
+  - aws-cli-bin
   - brave-bin
   - dnsmasq
   - docker
