@@ -5,65 +5,48 @@ hostname: WorkBox
 # Here you can define any custom made executable scripts or commands that
 # you would like to have run before moving on to package installation.
 initial_scripts:
-  - install_paru.sh
+  - install_emacs_ppa.sh
+  - install_golang_ppa.sh
 
-# sudo pacman -U https://archive.archlinux.org/packages/f/fish/fish-3.7.1-2-x86_64.pkg.tar.zst
-package_manager: paru
+package_manager: apt
 packages:
-  - alacritty
-  - aws-cli-v2
-  - beekeeper-studio-bin
-  - brave-bin
-  - docker
-  - docker-buildx
+  - docker.io
   - docker-compose
-  - emacs
-  - exa
+  - eza
+  - firefox
   - fish
-  - gdm
+  - fonts-firacode
   - git
-  - go
-  - golangci-lint-bin
-  - gnome
   - gnome-tweaks
-  - google-cloud-cli
-  - grub
-  - helm
-  - htop
-  - ispell
-  - kops
-  - kubectl
-  - man-db
-  - minikube
+  - libasound2-dev
+  - libc6-dev
+  - libgl1-mesa-dev
+  - libxcursor-dev
+  - libxi-dev
+  - libxinerama-dev
+  - libxrandr-dev
+  - libxxf86vm-dev
   - neofetch
-  - notion-app
   - npm
-  - openssh
-  - postman-bin
-  - python-uv
+  - pkg-config
   - ripgrep
-  - spice-vdagent
-  - sudo
-  - tfenv
-  - tilt-bin
   - tmux
-  - ttf-fira-code
 
 # Here you can define any flatpak packages you want to install
-# flatpak:
-#   -
+flatpak:
+  - com.brave.Browser
+  - im.riot.Riot
+  - io.github.pantheon_tweaks.pantheon-tweaks
 
 # Here you can define any custom made executable scripts or commands that
 # you would like to have run before moving on to enabling services.
 midway_scripts:
   - set_user_shell_fish.sh epost
   - add_user_group.sh epost docker
-  - add_user_group.sh epost tfenv
 
 init_system: systemd
-services:
-  - gdm
-  - spice-vdagentd
+# services:
+#   -
 
 # Here you can define any custom made executable scripts or commands that
 # you would like to have run as a final bootstrap

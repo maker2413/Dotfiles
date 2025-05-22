@@ -32,7 +32,6 @@ packages:
   - ripgrep
   - tmux
 
-
 # Here you can define any flatpak packages you want to install
 flatpak:
   - com.brave.Browser
@@ -46,8 +45,8 @@ midway_scripts:
   - add_user_group.sh epost docker
 
 init_system: systemd
-#services:
-#  -
+# services:
+#   -
 
 # Here you can define any custom made executable scripts or commands that
 # you would like to have run as a final bootstrap
