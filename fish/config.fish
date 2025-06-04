@@ -290,14 +290,21 @@ alias brave-browser "brave"
 alias em "emacs -nw"
 alias cls "clear && echo \"Current directory:\" && exa -lag --icons"
 alias journal "emacs -nw ~/Journal/"
-alias ll "exa -lag --icons"
-alias ls "exa"
 alias startdocker "sudo systemctl start docker"
 alias stopdocker "sudo systemctl stop docker"
 alias startssh "sudo systemctl start sshd"
 alias stopssh "sudo systemctl stop sshd"
+alias tscale "sudo tailscale"
 alias tmus "tmux"
 alias updates "paru -Syyu"
+
+# exa aliases
+if type -q exa
+  alias ll "exa -lag --icons"
+  alias ls "exa"
+else
+  alias ll "ls -la"
+end
 
 # Aliases for git commands
 alias ga "git add"
