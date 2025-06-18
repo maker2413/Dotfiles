@@ -11,6 +11,7 @@ initial_scripts:
 package_manager: apt
 packages:
   - docker.io
+  - docker-buildx
   - docker-compose
   - eza
   - firefox
@@ -18,6 +19,7 @@ packages:
   - fonts-firacode
   - git
   - gnome-tweaks
+  - golang-go
   - libasound2-dev
   - libc6-dev
   - libgl1-mesa-dev
@@ -30,6 +32,7 @@ packages:
   - npm
   - pkg-config
   - ripgrep
+  - tailscale
   - tmux
 
 # Here you can define any flatpak packages you want to install
@@ -37,6 +40,7 @@ flatpak:
   - com.brave.Browser
   - im.riot.Riot
   - io.github.pantheon_tweaks.pantheon-tweaks
+  - io.beekeeperstudio.Studio
 
 # Here you can define any custom made executable scripts or commands that
 # you would like to have run before moving on to enabling services.
