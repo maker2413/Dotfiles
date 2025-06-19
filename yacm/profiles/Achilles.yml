@@ -11,7 +11,9 @@ package_manager: dnf
 packages:
   - @virtualization
   - automake
+  - cmake
   - docker
+  - docker-compose
   - emacs
   - fastfetch
   - fira-code-fonts
@@ -32,10 +34,19 @@ packages:
 # Here you can define any flatpak packages you want to install
 flatpak:
   - com.brave.Browser
+  - com.getpostman.Postman
   - com.valvesoftware.Steam
   - im.riot.Riot
+  - io.beekeeperstudio.Studio
+  - io.github.streetpea.Chiaki4deck
 
+# go install github.com/bootdotdev/bootdev@latest
+# go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest
+# go install github.com/nikolaydubina/go-cover-treemap@latest
+# go install github.com/wimspaargaren/go-cover-ignore@latest
+# go install golang.org/x/tools/cmd/goimports@latest
 # go install golang.org/x/tools/gopls@latest
+# go install golang.org/x/vuln/cmd/govulncheck@latest
 
 # Here you can define any custom made executable scripts or commands that
 # you would like to have run before moving on to enabling services.
@@ -46,10 +57,11 @@ midway_scripts:
 
 init_system: systemd
 services:
+  - docker
   - libvirtd
 
 # Here you can define any custom made executable scripts or commands that
 # you would like to have run as a final bootstrap
 # step.
-# final_scripts:
-#   -
+final_scripts:
+  - install_minikube.sh

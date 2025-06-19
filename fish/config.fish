@@ -351,9 +351,16 @@ alias tfi "terraform init"
 alias tfp "terraform plan"
 alias tfw "terraform workspace"
 
+function gotree
+    if test -e .coverage-ignore.yaml
+        go test -coverprofile coverage.out ./... && GO_COVER_IGNORE_COVER_PROFILE_PATH='coverage.out' go-cover-ignore && go-cover-treemap -percent -coverprofile coverage.out > coverage.svg
+    else
+        go test -coverprofile coverage.out ./... && go-cover-treemap -percent -coverprofile coverage.out > coverage.svg
+    end
+end
+
 # Aliases for development
 alias gocover "go test -coverprofile coverage.out && go tool cover -html=coverage.out"
-alias gotree "go test -coverprofile coverage.out ./... && GO_COVER_IGNORE_COVER_PROFILE_PATH='coverage.out' go-cover-ignore && go-cover-treemap -percent -coverprofile coverage.out > coverage.svg"
 alias linecount "find . -type f -print0 | wc -l --files0-from=-"
 alias webdev "docker run --rm --name notes-web -v ~/Notes/WebSite:/usr/share/nginx/html:ro -p 8080:80 -d nginx"
 alias webdevstop "docker stop notes-web"
