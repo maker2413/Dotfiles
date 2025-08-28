@@ -407,3 +407,7 @@ end
 
 # Remove warning message from jupyter
 set -gx PYDEVD_DISABLE_FILE_VALIDATION 1
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /home/epost/.lmstudio/bin
+# End of LM Studio CLI section

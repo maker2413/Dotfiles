@@ -60,6 +60,7 @@ packages:
   - ttf-fira-code
   - virt-manager
   - vlc
+  - wget
   - xivlauncher
 
 # Here you can define any custom made executable scripts or commands that
