@@ -23,6 +23,7 @@ packages:
   - htop
   - hyprland
   - kitty
+  - kubernetes1.33-client
   - libtool
   - neovim
   - openrgb

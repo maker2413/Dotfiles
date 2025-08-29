@@ -42,6 +42,9 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
+# Start ghostty maximized
+maximize = 1
+
 # Custom keybindings
 # Rebind new tab to Ctrl+T (overriding default Ctrl+Shift+T) and unbind old binding.
 # Use explicit unbind action so default is removed and key passes through (transpose-char unavailable).
