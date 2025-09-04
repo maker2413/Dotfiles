@@ -51,6 +51,8 @@ maximize = 1
 keybind = ctrl+shift+t=unbind
 keybind = ctrl+t=new_tab
 
+maximize = true
+
 # Tab switching: use Ctrl+<number> instead of Alt+<number>.
 # Unbind the default Alt+number bindings first.
 keybind = alt+one=unbind

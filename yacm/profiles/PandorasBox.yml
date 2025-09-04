@@ -30,6 +30,7 @@ packages:
   - gnome
   - gnome-tweaks
   - grub
+  - helm
   - htop
   - ispell
   - iwd

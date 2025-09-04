@@ -306,6 +306,11 @@ else
   alias ll "ls -la"
 end
 
+# bat alias
+if type -q bat
+  alias cat "bat --color never"
+end
+
 # Aliases for git commands
 alias ga "git add"
 alias gc "git commit"
