@@ -396,7 +396,7 @@ if type -q pyenv
 end
 
 # Tfenv Setup
-if type -q tfenv
+if type -q tfenv; or test -d $HOME/.tfenv
   set -p PATH $HOME/.tfenv/bin
 end
 

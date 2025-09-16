@@ -76,3 +76,4 @@ keybind = ctrl+6=goto_tab:6
 keybind = ctrl+7=goto_tab:7
 keybind = ctrl+8=goto_tab:8
 keybind = ctrl+9=last_tab
+keybind = shift+enter=text:\x1b\r

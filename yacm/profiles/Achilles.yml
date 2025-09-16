@@ -20,6 +20,7 @@ packages:
   - fish
   - gnome-tweaks
   - golang-bin
+  - hcloud
   - htop
   - hyprland
   - kitty
@@ -56,11 +57,13 @@ midway_scripts:
   - set_user_shell_fish.sh epost
   - add_user_group.sh epost docker
   - add_user_group.sh epost libvirt
+  - fedora_install_packer.sh
 
 init_system: systemd
 services:
   - docker
   - libvirtd
+  - tailscaled
 
 # Here you can define any custom made executable scripts or commands that
 # you would like to have run as a final bootstrap
