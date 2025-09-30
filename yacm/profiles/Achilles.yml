@@ -18,6 +18,7 @@ packages:
   - fastfetch
   - fira-code-fonts
   - fish
+  - gh
   - gnome-tweaks
   - golang-bin
   - hcloud
