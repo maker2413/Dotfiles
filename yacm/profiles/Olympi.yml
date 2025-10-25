@@ -1,0 +1,40 @@
+---
+name: Olympi
+hostname: Olympi
+
+# Here you can define any custom made executable scripts or commands that
+# you would like to have run before moving on to package installation.
+# initial_scripts:
+
+package_manager: apt
+packages:
+  - autoconf
+  - curl
+  - dnsutils
+  - emacs-nox
+  - exa
+  - fish
+  - gcc
+  - git
+  - htop
+  - libtool
+  - neofetch
+  - ripgrep
+  - sudo
+  - tmux
+
+# Here you can define any custom made executable scripts or commands that
+# you would like to have run before moving on to enabling services.
+midway_scripts:
+  - set_user_shell_fish.sh epost
+
+init_system: systemd
+services:
+  - ssh
+
+# Here you can define any custom made executable scripts or commands that
+# you would like to have run as a final bootstrap
+# step.
+final_scripts:
+  - install_k3s.sh
+  # - install_kubectl.sh
