@@ -51,6 +51,9 @@ maximize = 1
 keybind = ctrl+shift+t=unbind
 keybind = ctrl+t=new_tab
 
+# Close tab with Ctrl+W
+keybind = ctrl+w=close_surface
+
 maximize = true
 
 # Tab switching: use Ctrl+<number> instead of Alt+<number>.
