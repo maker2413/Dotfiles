@@ -40,6 +40,7 @@ flatpak:
   - com.brave.Browser
   - com.getpostman.Postman
   - com.valvesoftware.Steam
+  - com.vscodium.codium
   - im.riot.Riot
   - io.beekeeperstudio.Studio
   - io.github.streetpea.Chiaki4deck
