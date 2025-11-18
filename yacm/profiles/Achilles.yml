@@ -29,6 +29,7 @@ packages:
   - libtool
   - neovim
   - openrgb
+  - snap
   - tailscale
 
 # sudo tailscale set --exit-node-allow-lan-access
@@ -65,6 +66,7 @@ init_system: systemd
 services:
   - docker
   - libvirtd
+  - snapd
   - tailscaled
 
 # Here you can define any custom made executable scripts or commands that
