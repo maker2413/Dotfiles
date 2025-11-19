@@ -26,6 +26,7 @@ packages:
   - hyprland
   - kitty
   - kubernetes1.33-client
+  - latex
   - libtool
   - neovim
   - openrgb
