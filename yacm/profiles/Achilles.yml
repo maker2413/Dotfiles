@@ -14,6 +14,7 @@ packages:
   - cmake
   - docker
   - docker-compose
+  - dvipng
   - emacs
   - fastfetch
   - fira-code-fonts
