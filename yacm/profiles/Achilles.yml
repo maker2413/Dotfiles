@@ -63,6 +63,7 @@ midway_scripts:
   - add_user_group.sh epost docker
   - add_user_group.sh epost libvirt
   - fedora_install_packer.sh
+  - install_gcloud_dnf.sh
 
 init_system: systemd
 services:
