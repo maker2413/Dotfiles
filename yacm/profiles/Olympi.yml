@@ -27,6 +27,7 @@ packages:
 # you would like to have run before moving on to enabling services.
 midway_scripts:
   - set_user_shell_fish.sh epost
+  - install_opencode.sh
 
 init_system: systemd
 services:
