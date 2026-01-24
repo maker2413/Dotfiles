@@ -370,6 +370,7 @@ alias linecount "find . -type f -print0 | wc -l --files0-from=-"
 alias webdev "docker run --rm --name notes-web -v ~/Notes/WebSite:/usr/share/nginx/html:ro -p 8080:80 -d nginx"
 alias webdevstop "docker stop notes-web"
 alias wordcount "find . -type f -print0 | wc -w --files0-from=-"
+alias tokscale "bunx tokscale@latest"
 
 if [ -t 0 ]
   if type -q neofetch
