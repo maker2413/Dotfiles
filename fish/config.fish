@@ -415,8 +415,8 @@ end
 set -gx PYDEVD_DISABLE_FILE_VALIDATION 1
 
 # Added by LM Studio CLI (lms)
-set -gx PATH $PATH /home/epost/.lmstudio/bin
+set -gx PATH $PATH $HOME/.lmstudio/bin
 # End of LM Studio CLI section
 
 # opencode
-fish_add_path /home/epost/.opencode/bin
+fish_add_path $HOME/.opencode/bin
