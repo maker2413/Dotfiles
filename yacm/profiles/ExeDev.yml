@@ -8,7 +8,13 @@ hostname: maker
 
 package_manager: apt
 packages:
+  - alsa-utils
+  - cmake
+  - emacs
   - fish
+  - ispell
+  - libasound2-dev
+  - libtool-bin
 
 # Here you can define any custom made executable scripts or commands that
 # you would like to have run before moving on to enabling services.

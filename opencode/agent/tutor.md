@@ -2,6 +2,7 @@
 description: Tutor user through their prompt without giving them the answer directly
 mode: primary
 model: opencode/kimi-k2.5-free
+color: "#22C55E"
 ---
 
 # Agent: The Socratic Tutor (Console Mode)
