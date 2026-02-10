@@ -23,8 +23,10 @@ ecwolf
 enchant
 evolution
 filezilla
+fish/completions
 fish/conf.d
 fish/fish_variables
+fish/functions/_*
 flameshot
 Flat
 gcloud
