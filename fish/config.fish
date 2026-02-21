@@ -420,3 +420,18 @@ set -gx PATH $PATH $HOME/.lmstudio/bin
 
 # opencode
 fish_add_path $HOME/.opencode/bin
+
+# Devcontainers Setup
+if test -d $HOME/.devcontainers/bin
+  set -gx PATH $PATH $HOME/.devcontainers/bin
+end
+
+# Zig Setup
+if test -d $HOME/Code/zig/build/stage3/bin
+  set -gx PATH $HOME/Code/zig/build/stage3/bin $PATH
+end
+
+# ZLS Setup
+if test -d $HOME/Code/zls/zig-out/bin
+  set -gx PATH $HOME/Code/zls/zig-out/bin $PATH
+end
