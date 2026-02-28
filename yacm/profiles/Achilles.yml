@@ -24,8 +24,10 @@ packages:
   - gnome-tweaks
   - golang-bin
   - hcloud
+  - helm
   - htop
   - hyprland
+  - kind
   - kitty
   - kubernetes1.33-client
   - latex
