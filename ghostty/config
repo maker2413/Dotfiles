@@ -50,6 +50,7 @@ maximize = 1
 # Use explicit unbind action so default is removed and key passes through (transpose-char unavailable).
 keybind = ctrl+shift+t=unbind
 keybind = ctrl+t=new_tab
+keybind = ctrl+w=close_tab
 
 # Close tab with Ctrl+W
 keybind = ctrl+w=close_surface

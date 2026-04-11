@@ -349,12 +349,21 @@ alias lci "lxc info"
 alias lcl "lxc list"
 
 # Aliases for terraform commands
-alias tf "terraform"
-alias tfa "terraform apply"
-alias tfd "terraform destroy"
-alias tfi "terraform init"
-alias tfp "terraform plan"
-alias tfw "terraform workspace"
+if type -q tofu
+  alias tf "tofu"
+  alias tfa "tofu apply"
+  alias tfd "tofu destroy"
+  alias tfi "tofu init"
+  alias tfp "tofu plan"
+  alias tfw "tofu workspace"
+else
+  alias tf "terraform"
+  alias tfa "terraform apply"
+  alias tfd "terraform destroy"
+  alias tfi "terraform init"
+  alias tfp "terraform plan"
+  alias tfw "terraform workspace"
+end
 
 function gotree
     if test -e .coverage-ignore.yaml

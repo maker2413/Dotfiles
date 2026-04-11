@@ -1,0 +1,53 @@
+---
+name: WSLArch
+hostname: WSLArch
+
+initial_scripts:
+  - install_paru.sh
+
+package_manager: paru
+packages:
+  - alacritty
+  - aws-cli-v2
+  - base-devel
+  - dnsutils
+  - docker
+  - emacs
+  - exa
+  - fastfetch
+  - fish
+  - flatpak
+  - fluxcd
+  - ghostty
+  - git
+  - google-cloud-cli
+  - google-cloud-cli-gke-gcloud-auth-plugin
+  - helm
+  - htop
+  - ispell
+  - k9s
+  - kubectl
+  - kubectx
+  - man-db
+  - minikube
+  - npm
+  - opencode
+  - openssh
+  - pyenv
+  - ripgrep
+  - sudo
+  - tfenv
+  - tmux
+  - ttf-fira-code
+
+flatpak:
+  - io.kinvolk.Headlamp
+
+midway_scripts:
+  - set_user_shell_fish.sh epost
+
+init_system: systemd
+services:
+  - sshd
+
+# final_scripts:

@@ -87,6 +87,16 @@ key = "End"
 mode = "~Alt"
 mods = "Shift"
 
+[[keyboard.bindings]]
+action = "CreateNewWindow"
+key = "t"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "Quit"
+key = "w"
+mods = "Control"
+
 [scrolling]
 history = 10000
 
