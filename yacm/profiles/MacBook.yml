@@ -1,0 +1,34 @@
+---
+package_manager: brew
+packages:
+  - autoconf
+  - automake
+  - awscli
+  - brave
+  - cmake
+  - docker-desktop
+  - fastfetch
+  - flux
+  - font-fira-code
+  - gcloud-cli
+  - ghostty
+  - headlamp
+  - helm
+  - htop
+  - ispell
+  - k9s
+  - keeper-password-manager
+  - kubectl
+  - kubectx
+  - libtool
+  - man-db
+  - microsoft-outlook
+  - minikube
+  - opencode
+  - pkg-config
+  - pyenv
+  - slack
+  - tenv
+  - tmux
+  - velero
+  - watch
