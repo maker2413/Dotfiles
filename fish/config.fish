@@ -380,6 +380,7 @@ alias webdev "docker run --rm --name notes-web -v ~/Notes/WebSite:/usr/share/ngi
 alias webdevstop "docker stop notes-web"
 alias wordcount "find . -type f -print0 | wc -w --files0-from=-"
 alias tokscale "bunx tokscale@latest"
+alias oc "opencode"
 
 if [ -t 0 ]
   if type -q neofetch
