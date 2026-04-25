@@ -122,6 +122,9 @@ alias kd="kubectl describe"
 alias ke="kubectl exec"
 alias kg="kubectl get"
 alias kga="kubectl get all"
+alias kgd="kubectl get deployments"
+alias kgp="kubectl get pods"
+alias kgs="kubectl get services"
 alias kr="kubectl delete"
 alias kl="kubectl logs"
 
@@ -131,6 +134,11 @@ alias wkc="watch kubectl create"
 alias wkd="watch kubectl describe"
 alias wkg="watch kubectl get"
 alias wkr="watch kubectl delete"
+
+
+# Additional kubectl aliases
+alias kct="kubectx"
+alias kns="kubens"
 
 # Aliases for terraform
 if type tofu > /dev/null; then
