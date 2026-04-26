@@ -382,6 +382,10 @@ alias wordcount "find . -type f -print0 | wc -w --files0-from=-"
 alias tokscale "bunx tokscale@latest"
 alias oc "opencode"
 
+if type -q fastfetch
+  alias neofetch "fastfetch"
+end
+
 if [ -t 0 ]
   if type -q neofetch
     neofetch
