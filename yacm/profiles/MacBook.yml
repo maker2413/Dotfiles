@@ -1,4 +1,10 @@
 ---
+name: MacBook
+hostname: Ethans-MBP
+
+initial_scripts:
+  - install_brew.sh
+
 package_manager: brew
 packages:
   - autoconf
@@ -18,6 +24,7 @@ packages:
   - ispell
   - k9s
   - keeper-password-manager
+  - kube-linter
   - kubectl
   - kubectx
   - libtool
@@ -25,10 +32,19 @@ packages:
   - microsoft-outlook
   - minikube
   - opencode
+  - opencode-desktop
   - pkg-config
-  - pyenv
   - slack
   - tenv
   - tmux
+  - uv
   - velero
   - watch
+
+# midway_scripts:
+
+# init_system: systemd
+# services:
+#   - sshd
+
+# final_scripts:

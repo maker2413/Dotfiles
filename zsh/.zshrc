@@ -106,7 +106,7 @@ alias ll="ls -la"
 alias ga="git add"
 alias gc="git commit"
 alias gch="git checkout"
-alias gcm="git checkout master"
+alias gcm="git checkout master 2>/dev/null || git checkout main"
 alias gd="git diff"
 alias gl="git pull"
 alias gs="git status"
@@ -151,6 +151,7 @@ fi
 
 # Development aliases
 alias oc="opencode"
+alias klint="kube-linter lint"
 
 # bun completions
 [ -s "/Users/epost/.bun/_bun" ] && source "/Users/epost/.bun/_bun"
