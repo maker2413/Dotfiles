@@ -281,6 +281,7 @@ end
 # User Config
 set -x EDITOR "emacs -nw"
 set fish_greeting
+fish_add_path "$HOME/.local/bin"
 
 # EXA Config
 set -x EXA_COLORS "uu=35:gu=35"
@@ -382,6 +383,7 @@ alias wordcount "find . -type f -print0 | wc -w --files0-from=-"
 alias tokscale "bunx tokscale@latest"
 alias oc "opencode"
 
+# Neofetch/Fastfetch config
 if type -q fastfetch
   alias neofetch "fastfetch"
 end
@@ -407,7 +409,6 @@ end
 if type -q pyenv
   status is-interactive; and pyenv init --path | source
   pyenv init - | source
-  # pyenv virtualenv-init - | source
 end
 
 # Tfenv Setup
@@ -430,7 +431,6 @@ set -gx PYDEVD_DISABLE_FILE_VALIDATION 1
 
 # Added by LM Studio CLI (lms)
 set -gx PATH $PATH $HOME/.lmstudio/bin
-# End of LM Studio CLI section
 
 # opencode
 fish_add_path $HOME/.opencode/bin
@@ -449,3 +449,6 @@ end
 if test -d $HOME/Code/zls/zig-out/bin
   set -gx PATH $HOME/Code/zls/zig-out/bin $PATH
 end
+
+# Pi
+set -gx PI_CODING_AGENT_DIR ~/.config/pi/agent
