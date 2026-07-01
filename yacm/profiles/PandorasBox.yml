@@ -55,6 +55,7 @@ packages:
   - rsync
   - steam
   - sudo
+  - swtpm
   - tailscale
   - tfenv
   - tk

@@ -452,3 +452,5 @@ end
 
 # Pi
 set -gx PI_CODING_AGENT_DIR ~/.config/pi/agent
+
+fish_add_path "$HOME/.local/bin"
