@@ -12,6 +12,7 @@ packages:
   - @virtualization
   - automake
   - awscli2
+  - calibre
   - cmake
   - docker
   - docker-compose
